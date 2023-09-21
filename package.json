@@ -1,13 +1,12 @@
 {
-	"name": "unicorn-fun",
+	"name": "accessible-spreadsheet-creator",
 	"version": "0.0.0",
-	"description": "My awesome module",
+	"description": "A simple module for creating accessible .ods files",
 	"license": "MIT",
-	"repository": "YOUR-GITHUB-USERNAME/unicorn-fun",
+	"repository": "jtrim-ons/accessible-spreadsheet-creator",
 	"author": {
-		"name": "YOUR NAME",
-		"email": "YOUR EMAIL",
-		"url": "YOUR WEBSITE"
+		"name": "James Trimble",
+		"email": "jtrim.ons@gmail.com"
 	},
 	"type": "module",
 	"exports": "./index.js",
@@ -21,10 +20,11 @@
 		"index.js"
 	],
 	"keywords": [
-		"unicorn",
-		"fun"
 	],
-	"dependencies": {},
+	"dependencies": {
+	    "jszip": "3.10.1",
+	    "handlebars": "4.7.8"
+	},
 	"devDependencies": {
 		"ava": "^5.3.0",
 		"xo": "^0.54.2"
