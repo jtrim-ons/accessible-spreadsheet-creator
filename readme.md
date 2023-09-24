@@ -1,65 +1,12 @@
-# node-module-boilerplate
+# Accessible Spreadsheet Creator
 
-> Boilerplate to kickstart creating a Node.js module
+## How to use it
 
-This is what I use for [my own modules](https://www.npmjs.com/~sindresorhus).
+TODO
 
-Also check out [`node-cli-boilerplate`](https://github.com/sindresorhus/node-cli-boilerplate).
+## How to build it
 
-## Getting started
-
-**Click the "Use this template" button.**
-
-Alternatively, create a new directory and then run:
-
-```sh
-curl -fsSL https://github.com/sindresorhus/node-module-boilerplate/archive/main.tar.gz | tar -xz --strip-components=1
-```
-
-There's also a [Yeoman generator](https://github.com/sindresorhus/generator-nm).
-
----
-
-**Remove everything from here and above**
-
----
-
-# unicorn-fun
-
-> My awesome module
-
-## Install
-
-```sh
-npm install unicorn-fun
-```
-
-## Usage
-
-```js
-import unicornFun from 'unicorn-fun';
-
-unicornFun('unicorns');
-//=> 'unicorns & rainbows'
-```
-
-## API
-
-### unicornFun(input, options?)
-
-#### input
-
-Type: `string`
-
-Lorem ipsum.
-
-#### options
-
-Type: `object`
-
-##### postfix
-
-Type: `string`\
-Default: `'rainbows'`
-
-Lorem ipsum.
+- The original template spreadsheet, created in LibreOffice, is `template-spreadsheets/download-template.ods`.
+- Run `scripts/unzip-spreadsheet.sh` to unzip this into `template-spreadsheets/unzipped-formatted/`.
+- Make a copy of that directory called `template-spreadsheets/handlebars`, with sections converted into Handlebars templates.
+- Run `scripts/create-json.sh` to create a JavaScript object with filenames as keys and these templates as values.
