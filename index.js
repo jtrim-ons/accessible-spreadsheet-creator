@@ -1,8 +1,6 @@
 import Handlebars from 'handlebars';
 import odsTemplate from './template-spreadsheets/template.js';
 
-console.log(odsTemplate);
-
 function cellRef(col, row) {
 	return String.fromCodePoint('A'.codePointAt(0) - 1 + col) + row;
 }
