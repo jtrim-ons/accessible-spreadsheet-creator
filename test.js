@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import JSZip from 'jszip';
+import Handlebars from 'handlebars';
 import accessibleSpreadsheetCreator from './index.js';
 //import test from 'ava';
 
@@ -41,7 +42,7 @@ const odsData = {
 	],
 };
 
-const zipFiles = accessibleSpreadsheetCreator(odsData);
+const zipFiles = accessibleSpreadsheetCreator(odsData, Handlebars);
 
 const zip = new JSZip();
 for (const {filename, contents} of zipFiles) {
