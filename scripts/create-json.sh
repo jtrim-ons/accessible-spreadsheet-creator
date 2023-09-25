@@ -8,7 +8,7 @@ cd template-spreadsheets/handlebars
 echo 'export default [';
 sep=''
 
-find . -type f | grep -v 'DS_Store' | grep -v '.png$' | while read f; do
+find . -type f | grep -v '.swp$' | grep -v 'DS_Store' | grep -v '.png$' | while read f; do
     echo $sep
     sep=,
     echo '{"filename":' '"'$(echo $f | sed 's_^./__')'", "contents":'
