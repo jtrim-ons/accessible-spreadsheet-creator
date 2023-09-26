@@ -4,8 +4,8 @@
     <config:config-item-set config:name="ooo:view-settings">
       <config:config-item config:name="VisibleAreaTop" config:type="int">0</config:config-item>
       <config:config-item config:name="VisibleAreaLeft" config:type="int">0</config:config-item>
-      <config:config-item config:name="VisibleAreaWidth" config:type="int">6773</config:config-item>
-      <config:config-item config:name="VisibleAreaHeight" config:type="int">2709</config:config-item>
+      <config:config-item config:name="VisibleAreaWidth" config:type="int">4515</config:config-item>
+      <config:config-item config:name="VisibleAreaHeight" config:type="int">2257</config:config-item>
       <config:config-item-map-indexed config:name="Views">
         <config:config-item-map-entry>
           <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>
@@ -46,27 +46,9 @@
               <config:config-item config:name="ShowGrid" config:type="boolean">true</config:config-item>
               <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
             </config:config-item-map-entry>
-            <config:config-item-map-entry config:name="Ethnicity">
-              <config:config-item config:name="CursorPositionX" config:type="int">0</config:config-item>
-              <config:config-item config:name="CursorPositionY" config:type="int">0</config:config-item>
-              <config:config-item config:name="HorizontalSplitMode" config:type="short">0</config:config-item>
-              <config:config-item config:name="VerticalSplitMode" config:type="short">0</config:config-item>
-              <config:config-item config:name="HorizontalSplitPosition" config:type="int">0</config:config-item>
-              <config:config-item config:name="VerticalSplitPosition" config:type="int">0</config:config-item>
-              <config:config-item config:name="ActiveSplitRange" config:type="short">2</config:config-item>
-              <config:config-item config:name="PositionLeft" config:type="int">0</config:config-item>
-              <config:config-item config:name="PositionRight" config:type="int">0</config:config-item>
-              <config:config-item config:name="PositionTop" config:type="int">0</config:config-item>
-              <config:config-item config:name="PositionBottom" config:type="int">0</config:config-item>
-              <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
-              <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
-              <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>
-              <config:config-item config:name="ShowGrid" config:type="boolean">true</config:config-item>
-              <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
-            </config:config-item-map-entry>
           </config:config-item-map-named>
           <config:config-item config:name="ActiveTable" config:type="string">Cover sheet</config:config-item>
-          <config:config-item config:name="HorizontalScrollbarWidth" config:type="int">1282</config:config-item>
+          <config:config-item config:name="HorizontalScrollbarWidth" config:type="int">1376</config:config-item>
           <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
           <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
           <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>
