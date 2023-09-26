@@ -1,7 +1,6 @@
 --- template-spreadsheets/handlebars/content.xml	2023-09-26 21:09:54
 +++ template-spreadsheets/handlebars/content.xml	2023-09-26 21:10:07
-@@ -57,11 +57,12 @@
-           </table:table-cell>
+@@ -68,10 +68,11 @@
          </table:table-row>
        </table:table>
 -      <table:table table:name="Age" table:style-name="ta1">
@@ -9,16 +8,16 @@
 +      <table:table table:name="{{sheetName}}" table:style-name="ta1">
          <table:table-column table:style-name="co1" table:number-columns-repeated="3" table:default-cell-style-name="Default"/>
          <table:table-row table:style-name="ro1">
-           <table:table-cell office:value-type="string" calcext:value-type="string">
+           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
 -            <text:p>Age title</text:p>
 +            <text:p>{{sheetName}} (generated title)</text:p>
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
-@@ -69,53 +70,32 @@
+@@ -79,59 +80,38 @@
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
-         <table:table-row table:style-name="ro1">
+         <table:table-row table:style-name="ro2">
 +{{#each ../tableHeadings}}
            <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>a</text:p>
@@ -33,7 +32,7 @@
 +{{/each}}
          </table:table-row>
 +{{#each rowData}}
-         <table:table-row table:style-name="ro1">
+         <table:table-row table:style-name="ro2">
            <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>x</text:p>
 +            <text:p>{{name}}</text:p>
@@ -49,7 +48,7 @@
 -          </table:table-cell>
 +{{/each}}
          </table:table-row>
--        <table:table-row table:style-name="ro1">
+-        <table:table-row table:style-name="ro2">
 -          <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>y</text:p>
 -          </table:table-cell>
@@ -60,7 +59,7 @@
 -            <text:p>4.0</text:p>
 -          </table:table-cell>
 -        </table:table-row>
--        <table:table-row table:style-name="ro1">
+-        <table:table-row table:style-name="ro2">
 -          <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>z</text:p>
 -          </table:table-cell>
@@ -72,6 +71,12 @@
 -          </table:table-cell>
 -        </table:table-row>
 +{{/each}}
+         <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
+           <table:table-cell table:number-columns-repeated="3"/>
+         </table:table-row>
+         <table:table-row table:style-name="ro2">
+           <table:table-cell table:number-columns-repeated="3"/>
+         </table:table-row>
        </table:table>
 +{{/each}}
        <table:named-expressions/>
@@ -95,14 +100,7 @@
  </office:document-meta>
 --- template-spreadsheets/handlebars/settings.xml	2023-09-26 21:09:54
 +++ template-spreadsheets/handlebars/settings.xml	2023-09-26 21:10:07
-@@ -4,13 +4,14 @@
-     <config:config-item-set config:name="ooo:view-settings">
-       <config:config-item config:name="VisibleAreaTop" config:type="int">0</config:config-item>
-       <config:config-item config:name="VisibleAreaLeft" config:type="int">0</config:config-item>
--      <config:config-item config:name="VisibleAreaWidth" config:type="int">4515</config:config-item>
--      <config:config-item config:name="VisibleAreaHeight" config:type="int">2257</config:config-item>
-+      <config:config-item config:name="VisibleAreaWidth" config:type="int">6773</config:config-item>
-+      <config:config-item config:name="VisibleAreaHeight" config:type="int">2709</config:config-item>
+@@ -9,8 +9,9 @@
        <config:config-item-map-indexed config:name="Views">
          <config:config-item-map-entry>
            <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>
@@ -121,12 +119,3 @@
              <config:config-item-map-entry config:name="Cover sheet">
                <config:config-item config:name="CursorPositionX" config:type="int">0</config:config-item>
                <config:config-item config:name="CursorPositionY" config:type="int">0</config:config-item>
-@@ -48,7 +50,7 @@
-             </config:config-item-map-entry>
-           </config:config-item-map-named>
-           <config:config-item config:name="ActiveTable" config:type="string">Cover sheet</config:config-item>
--          <config:config-item config:name="HorizontalScrollbarWidth" config:type="int">1376</config:config-item>
-+          <config:config-item config:name="HorizontalScrollbarWidth" config:type="int">1282</config:config-item>
-           <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
-           <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
-           <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>

@@ -4,8 +4,8 @@
     <config:config-item-set config:name="ooo:view-settings">
       <config:config-item config:name="VisibleAreaTop" config:type="int">0</config:config-item>
       <config:config-item config:name="VisibleAreaLeft" config:type="int">0</config:config-item>
-      <config:config-item config:name="VisibleAreaWidth" config:type="int">6773</config:config-item>
-      <config:config-item config:name="VisibleAreaHeight" config:type="int">2709</config:config-item>
+      <config:config-item config:name="VisibleAreaWidth" config:type="int">4515</config:config-item>
+      <config:config-item config:name="VisibleAreaHeight" config:type="int">2894</config:config-item>
       <config:config-item-map-indexed config:name="Views">
         <config:config-item-map-entry>
           <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>
@@ -50,7 +50,7 @@
             </config:config-item-map-entry>
           </config:config-item-map-named>
           <config:config-item config:name="ActiveTable" config:type="string">Cover sheet</config:config-item>
-          <config:config-item config:name="HorizontalScrollbarWidth" config:type="int">1282</config:config-item>
+          <config:config-item config:name="HorizontalScrollbarWidth" config:type="int">1077</config:config-item>
           <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
           <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
           <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>
