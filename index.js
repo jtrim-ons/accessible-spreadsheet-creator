@@ -5,6 +5,8 @@ function cellRef(col, row) {
 }
 
 export default function createZip(odsData, Handlebars) {
+	odsData.tableCount = odsData.sheets.length + 1;  // add 1 for cover sheet TODO add another for contents?
+
 	for (const sheet of odsData.sheets) {
 		sheet.firstTableCell = cellRef(1, 3);
 		sheet.lastTableCell = cellRef(1 + sheet.rowData[0].values.length, 3 + sheet.rowData.length);
