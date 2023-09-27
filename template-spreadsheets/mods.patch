@@ -1,6 +1,7 @@
---- template-spreadsheets/handlebars/content.xml	2023-09-26 21:09:54
-+++ template-spreadsheets/handlebars/content.xml	2023-09-26 21:10:07
-@@ -68,10 +68,11 @@
+--- template-spreadsheets/handlebars/content.xml	2023-09-27 17:59:36
++++ template-spreadsheets/handlebars/content.xml	2023-09-27 18:05:56
+@@ -109,11 +109,12 @@
+           <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
        </table:table>
 -      <table:table table:name="Age" table:style-name="ta1">
@@ -14,7 +15,7 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
-@@ -79,59 +80,38 @@
+@@ -121,49 +122,24 @@
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
          <table:table-row table:style-name="ro2">
@@ -74,7 +75,7 @@
          <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
-         <table:table-row table:style-name="ro2">
+@@ -171,9 +147,13 @@
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
        </table:table>
@@ -88,8 +89,8 @@
        </table:database-ranges>
      </office:spreadsheet>
    </office:body>
---- template-spreadsheets/handlebars/meta.xml	2023-09-26 21:09:54
-+++ template-spreadsheets/handlebars/meta.xml	2023-09-26 21:10:07
+--- template-spreadsheets/handlebars/meta.xml	2023-09-27 17:59:36
++++ template-spreadsheets/handlebars/meta.xml	2023-09-27 18:05:56
 @@ -6,6 +6,6 @@
      <meta:editing-duration>PT5M2S</meta:editing-duration>
      <meta:editing-cycles>6</meta:editing-cycles>
@@ -98,10 +99,9 @@
 +    <meta:document-statistic meta:table-count="{{tableCount}}" meta:object-count="0"/>
    </office:meta>
  </office:document-meta>
---- template-spreadsheets/handlebars/settings.xml	2023-09-26 21:09:54
-+++ template-spreadsheets/handlebars/settings.xml	2023-09-26 21:10:07
-@@ -9,8 +9,9 @@
-       <config:config-item-map-indexed config:name="Views">
+--- template-spreadsheets/handlebars/settings.xml	2023-09-27 17:59:36
++++ template-spreadsheets/handlebars/settings.xml	2023-09-27 18:05:56
+@@ -10,7 +10,8 @@
          <config:config-item-map-entry>
            <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>
            <config:config-item-map-named config:name="Tables">
