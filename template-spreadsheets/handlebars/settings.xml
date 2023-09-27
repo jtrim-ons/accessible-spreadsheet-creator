@@ -30,6 +30,24 @@
               <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
             </config:config-item-map-entry>
 {{/each}}
+            <config:config-item-map-entry config:name="Contents">
+              <config:config-item config:name="CursorPositionX" config:type="int">0</config:config-item>
+              <config:config-item config:name="CursorPositionY" config:type="int">0</config:config-item>
+              <config:config-item config:name="HorizontalSplitMode" config:type="short">0</config:config-item>
+              <config:config-item config:name="VerticalSplitMode" config:type="short">0</config:config-item>
+              <config:config-item config:name="HorizontalSplitPosition" config:type="int">0</config:config-item>
+              <config:config-item config:name="VerticalSplitPosition" config:type="int">0</config:config-item>
+              <config:config-item config:name="ActiveSplitRange" config:type="short">2</config:config-item>
+              <config:config-item config:name="PositionLeft" config:type="int">0</config:config-item>
+              <config:config-item config:name="PositionRight" config:type="int">0</config:config-item>
+              <config:config-item config:name="PositionTop" config:type="int">0</config:config-item>
+              <config:config-item config:name="PositionBottom" config:type="int">0</config:config-item>
+              <config:config-item config:name="ZoomType" config:type="short">0</config:config-item>
+              <config:config-item config:name="ZoomValue" config:type="int">100</config:config-item>
+              <config:config-item config:name="PageViewZoomValue" config:type="int">60</config:config-item>
+              <config:config-item config:name="ShowGrid" config:type="boolean">true</config:config-item>
+              <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
+            </config:config-item-map-entry>
             <config:config-item-map-entry config:name="Cover sheet">
               <config:config-item config:name="CursorPositionX" config:type="int">0</config:config-item>
               <config:config-item config:name="CursorPositionY" config:type="int">0</config:config-item>

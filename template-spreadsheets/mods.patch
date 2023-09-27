@@ -91,10 +91,10 @@
 --- template-spreadsheets/handlebars/meta.xml	2023-09-26 21:09:54
 +++ template-spreadsheets/handlebars/meta.xml	2023-09-26 21:10:07
 @@ -6,6 +6,6 @@
-     <meta:editing-duration>PT3M51S</meta:editing-duration>
-     <meta:editing-cycles>4</meta:editing-cycles>
+     <meta:editing-duration>PT5M2S</meta:editing-duration>
+     <meta:editing-cycles>6</meta:editing-cycles>
      <meta:generator>LibreOffice/7.0.6.2$MacOSX_X86_64 LibreOffice_project/144abb84a525d8e30c9dbbefa69cbbf2d8d4ae3b</meta:generator>
--    <meta:document-statistic meta:table-count="2" meta:cell-count="20" meta:object-count="0"/>
+-    <meta:document-statistic meta:table-count="3" meta:cell-count="27" meta:object-count="0"/>
 +    <meta:document-statistic meta:table-count="{{tableCount}}" meta:object-count="0"/>
    </office:meta>
  </office:document-meta>
@@ -116,6 +116,6 @@
                <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
              </config:config-item-map-entry>
 +{{/each}}
-             <config:config-item-map-entry config:name="Cover sheet">
+             <config:config-item-map-entry config:name="Contents">
                <config:config-item config:name="CursorPositionX" config:type="int">0</config:config-item>
                <config:config-item config:name="CursorPositionY" config:type="int">0</config:config-item>
