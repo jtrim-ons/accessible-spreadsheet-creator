@@ -21,6 +21,7 @@
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
     </style:style>
     <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
+    <style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
   </office:automatic-styles>
   <office:body>
     <office:spreadsheet>
@@ -88,10 +89,12 @@
         </table:table-row>
         <table:table-row table:style-name="ro2">
           <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>x</text:p>
+            <text:p>Age</text:p>
           </table:table-cell>
           <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>some text</text:p>
+            <text:p>
+              <text:a xlink:href="#Age" xlink:type="simple">Age</text:a>
+            </text:p>
           </table:table-cell>
         </table:table-row>
         <table:table-row table:style-name="ro2">
@@ -135,10 +138,10 @@
           <table:table-cell office:value-type="string" calcext:value-type="string">
             <text:p>x</text:p>
           </table:table-cell>
-          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="1" calcext:value-type="float">
+          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="1" calcext:value-type="float">
             <text:p>1.0</text:p>
           </table:table-cell>
-          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="2" calcext:value-type="float">
+          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="2" calcext:value-type="float">
             <text:p>2.0</text:p>
           </table:table-cell>
         </table:table-row>
@@ -146,10 +149,10 @@
           <table:table-cell office:value-type="string" calcext:value-type="string">
             <text:p>y</text:p>
           </table:table-cell>
-          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="3" calcext:value-type="float">
+          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="3" calcext:value-type="float">
             <text:p>3.0</text:p>
           </table:table-cell>
-          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="4" calcext:value-type="float">
+          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="4" calcext:value-type="float">
             <text:p>4.0</text:p>
           </table:table-cell>
         </table:table-row>
@@ -157,10 +160,10 @@
           <table:table-cell office:value-type="string" calcext:value-type="string">
             <text:p>z</text:p>
           </table:table-cell>
-          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="5" calcext:value-type="float">
+          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="5" calcext:value-type="float">
             <text:p>5.0</text:p>
           </table:table-cell>
-          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="6" calcext:value-type="float">
+          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="6" calcext:value-type="float">
             <text:p>6.0</text:p>
           </table:table-cell>
         </table:table-row>

@@ -38,13 +38,13 @@
 -            <text:p>x</text:p>
 +            <text:p>{{name}}</text:p>
            </table:table-cell>
--          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="1" calcext:value-type="float">
+-          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="1" calcext:value-type="float">
 -            <text:p>1.0</text:p>
 +{{#each values}}
-+          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
++          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
 +            <text:p>{{this}}</text:p>
            </table:table-cell>
--          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="2" calcext:value-type="float">
+-          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="2" calcext:value-type="float">
 -            <text:p>2.0</text:p>
 -          </table:table-cell>
 +{{/each}}
@@ -53,10 +53,10 @@
 -          <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>y</text:p>
 -          </table:table-cell>
--          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="3" calcext:value-type="float">
+-          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="3" calcext:value-type="float">
 -            <text:p>3.0</text:p>
 -          </table:table-cell>
--          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="4" calcext:value-type="float">
+-          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="4" calcext:value-type="float">
 -            <text:p>4.0</text:p>
 -          </table:table-cell>
 -        </table:table-row>
@@ -64,10 +64,10 @@
 -          <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>z</text:p>
 -          </table:table-cell>
--          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="5" calcext:value-type="float">
+-          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="5" calcext:value-type="float">
 -            <text:p>5.0</text:p>
 -          </table:table-cell>
--          <table:table-cell table:style-name="ce1" office:value-type="float" office:value="6" calcext:value-type="float">
+-          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="6" calcext:value-type="float">
 -            <text:p>6.0</text:p>
 -          </table:table-cell>
 -        </table:table-row>
