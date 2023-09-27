@@ -1,6 +1,35 @@
---- template-spreadsheets/handlebars/content.xml	2023-09-27 17:59:36
-+++ template-spreadsheets/handlebars/content.xml	2023-09-27 18:05:56
-@@ -109,11 +109,12 @@
+--- template-spreadsheets/handlebars/content.xml	2023-09-27 18:15:26
++++ template-spreadsheets/handlebars/content.xml	2023-09-27 21:15:33
+@@ -87,24 +87,18 @@
+             <text:p>b</text:p>
+           </table:table-cell>
+         </table:table-row>
++{{#each sheets}}
+         <table:table-row table:style-name="ro2">
+           <table:table-cell office:value-type="string" calcext:value-type="string">
+-            <text:p>Age</text:p>
++            <text:p>{{sheetName}}</text:p>
+           </table:table-cell>
+           <table:table-cell office:value-type="string" calcext:value-type="string">
+             <text:p>
+-              <text:a xlink:href="#Age" xlink:type="simple">Age</text:a>
++              <text:a xlink:href="#{{sheetName}}" xlink:type="simple">{{sheetName}}</text:a>
+             </text:p>
+           </table:table-cell>
+         </table:table-row>
+-        <table:table-row table:style-name="ro2">
+-          <table:table-cell office:value-type="string" calcext:value-type="string">
+-            <text:p>y</text:p>
+-          </table:table-cell>
+-          <table:table-cell office:value-type="string" calcext:value-type="string">
+-            <text:p>more text</text:p>
+-          </table:table-cell>
+-        </table:table-row>
++{{/each}}
+         <table:table-row table:style-name="ro2" table:number-rows-repeated="1048570">
+           <table:table-cell table:number-columns-repeated="2"/>
+         </table:table-row>
+@@ -112,11 +106,12 @@
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
        </table:table>
@@ -15,7 +44,7 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
-@@ -121,49 +122,24 @@
+@@ -124,49 +119,24 @@
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
          <table:table-row table:style-name="ro2">
@@ -75,7 +104,7 @@
          <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
-@@ -171,9 +147,13 @@
+@@ -174,9 +144,13 @@
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
        </table:table>
@@ -89,18 +118,18 @@
        </table:database-ranges>
      </office:spreadsheet>
    </office:body>
---- template-spreadsheets/handlebars/meta.xml	2023-09-27 17:59:36
-+++ template-spreadsheets/handlebars/meta.xml	2023-09-27 18:05:56
+--- template-spreadsheets/handlebars/meta.xml	2023-09-27 18:15:26
++++ template-spreadsheets/handlebars/meta.xml	2023-09-27 18:18:59
 @@ -6,6 +6,6 @@
-     <meta:editing-duration>PT5M2S</meta:editing-duration>
-     <meta:editing-cycles>6</meta:editing-cycles>
+     <meta:editing-duration>PT6M16S</meta:editing-duration>
+     <meta:editing-cycles>7</meta:editing-cycles>
      <meta:generator>LibreOffice/7.0.6.2$MacOSX_X86_64 LibreOffice_project/144abb84a525d8e30c9dbbefa69cbbf2d8d4ae3b</meta:generator>
 -    <meta:document-statistic meta:table-count="3" meta:cell-count="27" meta:object-count="0"/>
 +    <meta:document-statistic meta:table-count="{{tableCount}}" meta:object-count="0"/>
    </office:meta>
  </office:document-meta>
---- template-spreadsheets/handlebars/settings.xml	2023-09-27 17:59:36
-+++ template-spreadsheets/handlebars/settings.xml	2023-09-27 18:05:56
+--- template-spreadsheets/handlebars/settings.xml	2023-09-27 18:15:26
++++ template-spreadsheets/handlebars/settings.xml	2023-09-27 18:18:59
 @@ -10,7 +10,8 @@
          <config:config-item-map-entry>
            <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>
