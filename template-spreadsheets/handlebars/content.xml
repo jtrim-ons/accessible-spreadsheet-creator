@@ -11,9 +11,11 @@
     <style:style style:name="co1" style:family="table-column">
       <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
     </style:style>
-    <style:style style:name="co2" style:family="table-column">
-      <style:table-column-properties fo:break-before="auto" style:column-width="6.567cm"/>
+{{#each sheets}}
+    <style:style style:name="{{firstColumnStyleName}}" style:family="table-column">
+      <style:table-column-properties fo:break-before="auto" style:column-width="{{firstColumnWidthCm}}cm"/>
     </style:style>
+{{/each}}
     <style:style style:name="ro1" style:family="table-row">
       <style:table-row-properties style:row-height="0.778cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
@@ -92,7 +94,7 @@
       </table:table>
 {{#each sheets}}
       <table:table table:name="{{sheetName}}" table:style-name="ta1">
-        <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
+        <table:table-column table:style-name="{{firstColumnStyleName}}" table:default-cell-style-name="Default"/>
         <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">

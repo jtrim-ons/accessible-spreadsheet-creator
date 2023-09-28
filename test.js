@@ -40,7 +40,7 @@ const odsData = {
 			rowData: [
 				{name: 'First category', values: [12.3, 45.6]},
 				{name: 'Second category', values: [12.3, 45.6]},
-				{name: 'Third category', values: [78.9, 45.6]},
+				{name: 'Really long looooooong category', values: [78.9, 45.6]},
 			],
 		},
 	],
