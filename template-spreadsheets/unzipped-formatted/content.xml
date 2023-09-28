@@ -11,6 +11,9 @@
     <style:style style:name="co1" style:family="table-column">
       <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
     </style:style>
+    <style:style style:name="co2" style:family="table-column">
+      <style:table-column-properties fo:break-before="auto" style:column-width="6.567cm"/>
+    </style:style>
     <style:style style:name="ro1" style:family="table-row">
       <style:table-row-properties style:row-height="0.778cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
@@ -20,7 +23,6 @@
     <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
     </style:style>
-    <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
     <style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
   </office:automatic-styles>
   <office:body>
@@ -113,7 +115,8 @@
         </table:table-row>
       </table:table>
       <table:table table:name="Age" table:style-name="ta1">
-        <table:table-column table:style-name="co1" table:number-columns-repeated="3" table:default-cell-style-name="Default"/>
+        <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
+        <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
             <text:p>Age title</text:p>

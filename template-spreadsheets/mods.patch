@@ -33,7 +33,7 @@
        </table:table>
        <table:table table:name="Contents" table:style-name="ta1">
          <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
-@@ -87,36 +75,25 @@
+@@ -87,37 +75,26 @@
              <text:p>b</text:p>
            </table:table-cell>
          </table:table-row>
@@ -69,7 +69,8 @@
 -      <table:table table:name="Age" table:style-name="ta1">
 +{{#each sheets}}
 +      <table:table table:name="{{sheetName}}" table:style-name="ta1">
-         <table:table-column table:style-name="co1" table:number-columns-repeated="3" table:default-cell-style-name="Default"/>
+         <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
+         <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
 -            <text:p>Age title</text:p>
