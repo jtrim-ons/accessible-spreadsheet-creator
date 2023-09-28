@@ -104,14 +104,16 @@
          <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
-@@ -174,9 +144,13 @@
+@@ -174,9 +144,14 @@
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
        </table:table>
 +{{/each}}
        <table:named-expressions/>
        <table:database-ranges>
-         <table:database-range table:name="here_is_a_table" table:target-range-address="'Cover sheet'.A3:'Cover sheet'.B5" table:on-update-keep-styles="true" table:on-update-keep-size="false" table:orientation="column"/>
+-        <table:database-range table:name="here_is_a_table" table:target-range-address="'Cover sheet'.A3:'Cover sheet'.B5" table:on-update-keep-styles="true" table:on-update-keep-size="false" table:orientation="column"/>
++        <table:database-range table:name="selected_characteristics" table:target-range-address="'Cover sheet'.{{firstCharacteristicsCell}}:'Cover sheet'.{{lastCharacteristicsCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false" table:orientation="column"/>
++        <table:database-range table:name="table_of_contents" table:target-range-address="'Contents'.{{firstTocCell}}:'Contents'.{{lastTocCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false" table:orientation="column"/>
 +{{#each sheets}}
 +        <table:database-range table:name="{{tableName}}" table:target-range-address="'{{sheetName}}'.{{firstTableCell}}:'{{sheetName}}'.{{lastTableCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false" table:orientation="column"/>
 +{{/each}}
