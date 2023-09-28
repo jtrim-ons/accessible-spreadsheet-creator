@@ -1,6 +1,39 @@
 --- template-spreadsheets/handlebars/content.xml	2023-09-27 18:15:26
-+++ template-spreadsheets/handlebars/content.xml	2023-09-27 21:15:33
-@@ -87,24 +87,18 @@
++++ template-spreadsheets/handlebars/content.xml	2023-09-28 11:15:49
+@@ -45,28 +45,16 @@
+             <text:p>b</text:p>
+           </table:table-cell>
+         </table:table-row>
++{{#each selectedCharacteristics}}
+         <table:table-row table:style-name="ro2">
+           <table:table-cell office:value-type="string" calcext:value-type="string">
+-            <text:p>x</text:p>
++            <text:p>{{variable}}</text:p>
+           </table:table-cell>
+           <table:table-cell office:value-type="string" calcext:value-type="string">
+-            <text:p>some text</text:p>
++            <text:p>{{category}}</text:p>
+           </table:table-cell>
+         </table:table-row>
+-        <table:table-row table:style-name="ro2">
+-          <table:table-cell office:value-type="string" calcext:value-type="string">
+-            <text:p>y</text:p>
+-          </table:table-cell>
+-          <table:table-cell office:value-type="string" calcext:value-type="string">
+-            <text:p>more text</text:p>
+-          </table:table-cell>
+-        </table:table-row>
+-        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048570">
+-          <table:table-cell table:number-columns-repeated="2"/>
+-        </table:table-row>
+-        <table:table-row table:style-name="ro2">
+-          <table:table-cell table:number-columns-repeated="2"/>
+-        </table:table-row>
++{{/each}}
+       </table:table>
+       <table:table table:name="Contents" table:style-name="ta1">
+         <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
+@@ -87,36 +75,25 @@
              <text:p>b</text:p>
            </table:table-cell>
          </table:table-row>
@@ -25,13 +58,13 @@
 -            <text:p>more text</text:p>
 -          </table:table-cell>
 -        </table:table-row>
+-        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048570">
+-          <table:table-cell table:number-columns-repeated="2"/>
+-        </table:table-row>
+-        <table:table-row table:style-name="ro2">
+-          <table:table-cell table:number-columns-repeated="2"/>
+-        </table:table-row>
 +{{/each}}
-         <table:table-row table:style-name="ro2" table:number-rows-repeated="1048570">
-           <table:table-cell table:number-columns-repeated="2"/>
-         </table:table-row>
-@@ -112,11 +106,12 @@
-           <table:table-cell table:number-columns-repeated="2"/>
-         </table:table-row>
        </table:table>
 -      <table:table table:name="Age" table:style-name="ta1">
 +{{#each sheets}}
@@ -44,7 +77,7 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
-@@ -124,49 +119,24 @@
+@@ -124,49 +101,24 @@
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
          <table:table-row table:style-name="ro2">
@@ -104,7 +137,7 @@
          <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
-@@ -174,9 +144,14 @@
+@@ -174,9 +126,14 @@
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
        </table:table>
@@ -121,7 +154,7 @@
      </office:spreadsheet>
    </office:body>
 --- template-spreadsheets/handlebars/meta.xml	2023-09-27 18:15:26
-+++ template-spreadsheets/handlebars/meta.xml	2023-09-27 18:18:59
++++ template-spreadsheets/handlebars/meta.xml	2023-09-28 11:08:13
 @@ -6,6 +6,6 @@
      <meta:editing-duration>PT6M16S</meta:editing-duration>
      <meta:editing-cycles>7</meta:editing-cycles>
@@ -131,7 +164,7 @@
    </office:meta>
  </office:document-meta>
 --- template-spreadsheets/handlebars/settings.xml	2023-09-27 18:15:26
-+++ template-spreadsheets/handlebars/settings.xml	2023-09-27 18:18:59
++++ template-spreadsheets/handlebars/settings.xml	2023-09-28 11:08:13
 @@ -10,7 +10,8 @@
          <config:config-item-map-entry>
            <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>

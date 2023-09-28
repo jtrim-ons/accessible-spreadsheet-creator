@@ -16,6 +16,10 @@ import accessibleSpreadsheetCreator from './index.js';
 //});
 
 const odsData = {
+	selectedCharacteristics: [
+		{variable: 'Sex', category: 'Female'},
+		{variable: 'Religion', category: 'Hindu'},
+	],
 	tableHeadings: [
 		'Category',
 		'Selected group',

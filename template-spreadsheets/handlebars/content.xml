@@ -45,28 +45,16 @@
             <text:p>b</text:p>
           </table:table-cell>
         </table:table-row>
+{{#each selectedCharacteristics}}
         <table:table-row table:style-name="ro2">
           <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>x</text:p>
+            <text:p>{{variable}}</text:p>
           </table:table-cell>
           <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>some text</text:p>
+            <text:p>{{category}}</text:p>
           </table:table-cell>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
-          <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>y</text:p>
-          </table:table-cell>
-          <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>more text</text:p>
-          </table:table-cell>
-        </table:table-row>
-        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048570">
-          <table:table-cell table:number-columns-repeated="2"/>
-        </table:table-row>
-        <table:table-row table:style-name="ro2">
-          <table:table-cell table:number-columns-repeated="2"/>
-        </table:table-row>
+{{/each}}
       </table:table>
       <table:table table:name="Contents" table:style-name="ta1">
         <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
@@ -99,12 +87,6 @@
           </table:table-cell>
         </table:table-row>
 {{/each}}
-        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048570">
-          <table:table-cell table:number-columns-repeated="2"/>
-        </table:table-row>
-        <table:table-row table:style-name="ro2">
-          <table:table-cell table:number-columns-repeated="2"/>
-        </table:table-row>
       </table:table>
 {{#each sheets}}
       <table:table table:name="{{sheetName}}" table:style-name="ta1">
