@@ -1,5 +1,5 @@
 --- template-spreadsheets/handlebars/content.xml	2023-10-09 21:37:30
-+++ template-spreadsheets/handlebars/content.xml	2023-10-09 21:49:15
++++ template-spreadsheets/handlebars/content.xml	2023-10-09 22:08:44
 @@ -11,9 +11,11 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -60,7 +60,7 @@
            <table:table-cell office:value-type="string" calcext:value-type="string">
              <text:p>
 -              <text:a xlink:href="#Age" xlink:type="simple">Age</text:a>
-+              <text:a xlink:href="#{{sheetName}}" xlink:type="simple">{{sheetName}}</text:a>
++              <text:a xlink:href="#{{sheetName}}.A1" xlink:type="simple">{{sheetName}}</text:a>
              </text:p>
            </table:table-cell>
          </table:table-row>
