@@ -1,5 +1,5 @@
---- template-spreadsheets/handlebars/content.xml	2023-09-28 11:47:09
-+++ template-spreadsheets/handlebars/content.xml	2023-10-09 16:11:12
+--- template-spreadsheets/handlebars/content.xml	2023-10-09 21:37:30
++++ template-spreadsheets/handlebars/content.xml	2023-10-09 16:11:33
 @@ -11,9 +11,11 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -169,8 +169,8 @@
        </table:database-ranges>
      </office:spreadsheet>
    </office:body>
---- template-spreadsheets/handlebars/meta.xml	2023-09-28 11:47:09
-+++ template-spreadsheets/handlebars/meta.xml	2023-09-28 12:01:44
+--- template-spreadsheets/handlebars/meta.xml	2023-10-09 21:37:30
++++ template-spreadsheets/handlebars/meta.xml	2023-10-09 16:11:33
 @@ -6,6 +6,6 @@
      <meta:editing-duration>PT6M31S</meta:editing-duration>
      <meta:editing-cycles>8</meta:editing-cycles>
@@ -179,23 +179,3 @@
 +    <meta:document-statistic meta:table-count="{{tableCount}}" meta:object-count="0"/>
    </office:meta>
  </office:document-meta>
---- template-spreadsheets/handlebars/settings.xml	2023-09-28 11:47:09
-+++ template-spreadsheets/handlebars/settings.xml	2023-09-28 12:01:44
-@@ -10,7 +10,8 @@
-         <config:config-item-map-entry>
-           <config:config-item config:name="ViewId" config:type="string">view1</config:config-item>
-           <config:config-item-map-named config:name="Tables">
--            <config:config-item-map-entry config:name="Age">
-+{{#each sheets}}
-+            <config:config-item-map-entry config:name="{{this.sheetName}}">
-               <config:config-item config:name="CursorPositionX" config:type="int">0</config:config-item>
-               <config:config-item config:name="CursorPositionY" config:type="int">0</config:config-item>
-               <config:config-item config:name="HorizontalSplitMode" config:type="short">0</config:config-item>
-@@ -28,6 +29,7 @@
-               <config:config-item config:name="ShowGrid" config:type="boolean">true</config:config-item>
-               <config:config-item config:name="AnchoredTextOverflowLegacy" config:type="boolean">false</config:config-item>
-             </config:config-item-map-entry>
-+{{/each}}
-             <config:config-item-map-entry config:name="Contents">
-               <config:config-item config:name="CursorPositionX" config:type="int">0</config:config-item>
-               <config:config-item config:name="CursorPositionY" config:type="int">0</config:config-item>
