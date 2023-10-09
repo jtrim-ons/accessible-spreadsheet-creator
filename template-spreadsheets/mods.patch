@@ -1,5 +1,5 @@
 --- template-spreadsheets/handlebars/content.xml	2023-09-28 11:47:09
-+++ template-spreadsheets/handlebars/content.xml	2023-09-28 16:31:17
++++ template-spreadsheets/handlebars/content.xml	2023-10-09 16:11:12
 @@ -11,9 +11,11 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -93,7 +93,7 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
-@@ -127,49 +106,24 @@
+@@ -127,59 +106,33 @@
            <table:table-cell table:number-columns-repeated="3"/>
          </table:table-row>
          <table:table-row table:style-name="ro2">
@@ -149,13 +149,13 @@
 -            <text:p>6.0</text:p>
 -          </table:table-cell>
 -        </table:table-row>
+-        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
+-          <table:table-cell table:number-columns-repeated="3"/>
+-        </table:table-row>
+-        <table:table-row table:style-name="ro2">
+-          <table:table-cell table:number-columns-repeated="3"/>
+-        </table:table-row>
 +{{/each}}
-         <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
-           <table:table-cell table:number-columns-repeated="3"/>
-         </table:table-row>
-@@ -177,9 +131,14 @@
-           <table:table-cell table:number-columns-repeated="3"/>
-         </table:table-row>
        </table:table>
 +{{/each}}
        <table:named-expressions/>
