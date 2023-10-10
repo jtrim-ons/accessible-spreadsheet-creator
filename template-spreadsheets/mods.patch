@@ -95,14 +95,14 @@
          </table:table-row>
          <table:table-row table:style-name="ro2">
 +{{#each ../tableHeadings}}
-           <table:table-cell office:value-type="string" calcext:value-type="string">
+           <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
 -            <text:p>a</text:p>
 +            <text:p>{{this}}</text:p>
            </table:table-cell>
--          <table:table-cell office:value-type="string" calcext:value-type="string">
+-          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
 -            <text:p>b</text:p>
 -          </table:table-cell>
--          <table:table-cell office:value-type="string" calcext:value-type="string">
+-          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
 -            <text:p>c</text:p>
 -          </table:table-cell>
 +{{/each}}

@@ -2,9 +2,9 @@
 <office:document-meta xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" office:version="1.3">
   <office:meta>
     <meta:creation-date>2023-09-21T12:53:29.924750298</meta:creation-date>
-    <dc:date>2023-10-10T22:13:49.821837619</dc:date>
-    <meta:editing-duration>PT10M56S</meta:editing-duration>
-    <meta:editing-cycles>11</meta:editing-cycles>
+    <dc:date>2023-10-10T22:26:15.917756349</dc:date>
+    <meta:editing-duration>PT11M28S</meta:editing-duration>
+    <meta:editing-cycles>12</meta:editing-cycles>
     <meta:generator>LibreOffice/7.0.6.2$MacOSX_X86_64 LibreOffice_project/144abb84a525d8e30c9dbbefa69cbbf2d8d4ae3b</meta:generator>
     <meta:document-statistic meta:table-count="{{tableCount}}" meta:object-count="0"/>
   </office:meta>

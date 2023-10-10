@@ -17,16 +17,18 @@
     <style:style style:name="ro1" style:family="table-row">
       <style:table-row-properties style:row-height="0.778cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
-    <style:style style:name="ro2" style:family="table-row">
-      <style:table-row-properties style:row-height="0.529cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
-    </style:style>
     <style:style style:name="ro3" style:family="table-row">
       <style:table-row-properties style:row-height="0.612cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+    </style:style>
+    <style:style style:name="ro2" style:family="table-row">
+      <style:table-row-properties style:row-height="0.529cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
     <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
     </style:style>
-    <style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
+    <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default">
+      <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+    </style:style>
     <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
   </office:automatic-styles>
   <office:body>
@@ -68,10 +70,10 @@
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
         <table:table-row table:style-name="ro2">
-          <table:table-cell office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
             <text:p>a</text:p>
           </table:table-cell>
-          <table:table-cell office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
             <text:p>b</text:p>
           </table:table-cell>
         </table:table-row>
@@ -113,13 +115,13 @@
           <table:table-cell table:number-columns-repeated="3"/>
         </table:table-row>
         <table:table-row table:style-name="ro2">
-          <table:table-cell office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
             <text:p>a</text:p>
           </table:table-cell>
-          <table:table-cell office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
             <text:p>b</text:p>
           </table:table-cell>
-          <table:table-cell office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
             <text:p>c</text:p>
           </table:table-cell>
         </table:table-row>
