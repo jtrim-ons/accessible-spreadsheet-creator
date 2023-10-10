@@ -26,6 +26,7 @@
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
     </style:style>
     <style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
+    <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
   </office:automatic-styles>
   <office:body>
     <office:spreadsheet>
@@ -118,7 +119,7 @@
             <text:p>{{name}}</text:p>
           </table:table-cell>
 {{#each values}}
-          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
+          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
             <text:p>{{this}}</text:p>
           </table:table-cell>
 {{/each}}
