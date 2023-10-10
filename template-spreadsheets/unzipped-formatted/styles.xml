@@ -24,10 +24,10 @@
       <style:text-properties fo:color="#000000" fo:font-size="24pt" fo:font-style="normal" fo:font-weight="bold"/>
     </style:style>
     <style:style style:name="Heading_20_1" style:display-name="Heading 1" style:family="table-cell" style:parent-style-name="Heading">
-      <style:text-properties fo:color="#000000" fo:font-size="18pt" fo:font-style="normal" fo:font-weight="normal"/>
+      <style:text-properties fo:color="#000000" fo:font-size="18pt" fo:font-style="normal" fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
     </style:style>
     <style:style style:name="Heading_20_2" style:display-name="Heading 2" style:family="table-cell" style:parent-style-name="Heading">
-      <style:text-properties fo:color="#000000" fo:font-size="14pt" fo:font-style="normal" fo:font-weight="normal"/>
+      <style:text-properties fo:color="#000000" fo:font-size="14pt" fo:font-style="normal" fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
     </style:style>
     <style:style style:name="Text" style:family="table-cell" style:parent-style-name="Default"/>
     <style:style style:name="Note" style:family="table-cell" style:parent-style-name="Text">
@@ -121,7 +121,7 @@
           <text:p><text:sheet-name>???</text:sheet-name><text:s/>(<text:title>???</text:title>)</text:p>
         </style:region-left>
         <style:region-right>
-          <text:p><text:date style:data-style-name="N2" text:date-value="2023-10-10">00/00/0000</text:date>, <text:time style:data-style-name="N2" text:time-value="21:40:19.465469170">00:00:00</text:time></text:p>
+          <text:p><text:date style:data-style-name="N2" text:date-value="2023-10-10">00/00/0000</text:date>, <text:time style:data-style-name="N2" text:time-value="22:13:14.352025389">00:00:00</text:time></text:p>
         </style:region-right>
       </style:header>
       <style:header-left style:display="false"/>
