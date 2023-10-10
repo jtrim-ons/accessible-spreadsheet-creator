@@ -22,43 +22,39 @@
     <style:style style:name="ro2" style:family="table-row">
       <style:table-row-properties style:row-height="0.529cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
+    <style:style style:name="ro3" style:family="table-row">
+      <style:table-row-properties style:row-height="0.612cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+    </style:style>
     <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
     </style:style>
-    <style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
     <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
+    <style:style style:name="ce3" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
   </office:automatic-styles>
   <office:body>
     <office:spreadsheet>
       <table:calculation-settings table:automatic-find-labels="false" table:use-regular-expressions="false" table:use-wildcards="true"/>
       <table:table table:name="Cover sheet" table:style-name="ta1">
-        <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
+        <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
             <text:p>Cover sheet title</text:p>
           </table:table-cell>
-          <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
-          <table:table-cell table:number-columns-repeated="2"/>
-        </table:table-row>
-        <table:table-row table:style-name="ro2">
-          <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>a</text:p>
-          </table:table-cell>
-          <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>b</text:p>
+{{#each coverSheetContents}}
+{{#if isSubtitle}}
+        <table:table-row table:style-name="ro3">
+          <table:table-cell table:style-name="Heading_20_2" office:value-type="string" calcext:value-type="string">
+            <text:p>{{text}}</text:p>
           </table:table-cell>
         </table:table-row>
-{{#each selectedCharacteristics}}
+{{else}}
         <table:table-row table:style-name="ro2">
           <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>{{variable}}</text:p>
-          </table:table-cell>
-          <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>{{category}}</text:p>
+            <text:p>{{text}}</text:p>
           </table:table-cell>
         </table:table-row>
+{{/if}}
 {{/each}}
       </table:table>
       <table:table table:name="Contents" table:style-name="ta1">
@@ -119,7 +115,7 @@
             <text:p>{{name}}</text:p>
           </table:table-cell>
 {{#each values}}
-          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
+          <table:table-cell table:style-name="ce3" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
             <text:p>{{this}}</text:p>
           </table:table-cell>
 {{/each}}

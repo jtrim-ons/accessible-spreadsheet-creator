@@ -16,9 +16,13 @@ import accessibleSpreadsheetCreator from './index.js';
 //});
 
 const odsData = {
-	selectedCharacteristics: [
-		{variable: 'Sex', category: 'Female'},
-		{variable: 'Religion', category: 'Hindu'},
+	coverSheetContents: [
+		{isSubtitle: true, text: 'Subtitle 1'},
+		{isSubtitle: false, text: 'Text 1a'},
+		{isSubtitle: false, text: 'Text 1b'},
+		{isSubtitle: true, text: 'Subtitle 2'},
+		{isSubtitle: false, text: 'Text 2a'},
+		{isSubtitle: false, text: 'Text 2b'},
 	],
 	tableHeadings: [
 		'Category',
