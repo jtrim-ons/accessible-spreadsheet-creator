@@ -1,5 +1,5 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-11 11:54:30
-+++ template-spreadsheets/mustache/content.xml	2023-10-11 14:19:53
++++ template-spreadsheets/mustache/content.xml	2023-10-11 20:58:08
 @@ -11,9 +11,13 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -201,8 +201,20 @@
        </table:database-ranges>
      </office:spreadsheet>
    </office:body>
+--- template-spreadsheets/mustache/styles.xml	2023-10-11 11:54:30
++++ template-spreadsheets/mustache/styles.xml	2023-10-11 20:58:18
+@@ -17,6 +17,9 @@
+     <number:number-style style:name="N111">
+       <number:number number:decimal-places="1" number:min-decimal-places="1" number:min-integer-digits="1"/>
+     </number:number-style>
++    <number:number-style style:name="number_with_commas">
++      <number:number number:decimal-places="0" number:min-decimal-places="0" number:min-integer-digits="1" number:grouping="true"/>
++    </number:number-style>
+     <style:style style:name="Default" style:family="table-cell">
+       <style:text-properties style:font-name="Arial" fo:font-family="Arial" style:font-style-name="Regular" style:font-family-generic="swiss" style:font-pitch="variable" fo:font-size="12pt"/>
+     </style:style>
 --- template-spreadsheets/mustache/meta.xml	2023-10-11 11:54:30
-+++ template-spreadsheets/mustache/meta.xml	2023-10-11 11:54:40
++++ template-spreadsheets/mustache/meta.xml	2023-10-11 20:58:08
 @@ -6,6 +6,6 @@
      <meta:editing-duration>PT12M36S</meta:editing-duration>
      <meta:editing-cycles>14</meta:editing-cycles>
@@ -212,7 +224,7 @@
    </office:meta>
  </office:document-meta>
 --- template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-11 11:40:34
-+++ template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-11 11:54:40
++++ template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-11 20:58:08
 @@ -3,9 +3,5 @@
    <manifest:file-entry manifest:full-path="/" manifest:version="1.3" manifest:media-type="application/vnd.oasis.opendocument.spreadsheet"/>
    <manifest:file-entry manifest:full-path="meta.xml" manifest:media-type="text/xml"/>
