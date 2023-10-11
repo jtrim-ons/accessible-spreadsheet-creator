@@ -16,14 +16,17 @@
       <style:table-column-properties fo:break-before="auto" style:column-width="{{firstColumnWidthCm}}cm"/>
     </style:style>
 {{/each}}
+    <style:style style:name="co3" style:family="table-column">
+      <style:table-column-properties fo:break-before="auto" style:column-width="15.723cm"/>
+    </style:style>
     <style:style style:name="ro1" style:family="table-row">
       <style:table-row-properties style:row-height="0.778cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
-    <style:style style:name="ro3" style:family="table-row">
-      <style:table-row-properties style:row-height="0.612cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
-    </style:style>
     <style:style style:name="ro2" style:family="table-row">
       <style:table-row-properties style:row-height="0.529cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+    </style:style>
+    <style:style style:name="ro3" style:family="table-row">
+      <style:table-row-properties style:row-height="0.612cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
     <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
@@ -33,12 +36,19 @@
       <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
     </style:style>
     <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
+    <style:style style:name="ce5" style:family="table-cell" style:parent-style-name="Default">
+      <style:table-cell-properties fo:wrap-option="wrap"/>
+    </style:style>
+    <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default">
+      <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+    </style:style>
+    <style:style style:name="ce7" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
   </office:automatic-styles>
   <office:body>
     <office:spreadsheet>
       <table:calculation-settings table:automatic-find-labels="false" table:use-regular-expressions="false" table:use-wildcards="true"/>
       <table:table table:name="Cover sheet" table:style-name="ta1">
-        <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
+        <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
             <text:p>Cover sheet title</text:p>
@@ -53,7 +63,7 @@
         </table:table-row>
 {{else}}
         <table:table-row table:style-name="ro2">
-          <table:table-cell office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="ce5" office:value-type="string" calcext:value-type="string">
             <text:p>{{text}}</text:p>
           </table:table-cell>
         </table:table-row>
@@ -75,10 +85,10 @@
           <table:table-cell/>
         </table:table-row>
         <table:table-row table:style-name="ro2">
-          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
             <text:p>a</text:p>
           </table:table-cell>
-          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
             <text:p>b</text:p>
           </table:table-cell>
         </table:table-row>
@@ -119,7 +129,7 @@
 {{/each}}
         <table:table-row table:style-name="ro2">
 {{#each ../tableHeadings}}
-          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
             <text:p>{{this}}</text:p>
           </table:table-cell>
 {{/each}}
@@ -130,7 +140,7 @@
             <text:p>{{name}}</text:p>
           </table:table-cell>
 {{#each values}}
-          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
+          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
             <text:p>{{this}}</text:p>
           </table:table-cell>
 {{/each}}
