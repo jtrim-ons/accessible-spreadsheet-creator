@@ -41,7 +41,7 @@
       <style:text-properties fo:color="#808080" fo:font-size="10pt" fo:font-style="italic" fo:font-weight="normal"/>
     </style:style>
     <style:style style:name="Hyperlink" style:family="table-cell" style:parent-style-name="Text">
-      <style:text-properties fo:color="#0000ee" fo:font-size="10pt" fo:font-style="normal" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="#0000ee" fo:font-weight="normal"/>
+      <style:text-properties fo:color="#0000ee" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="#0000ee" fo:font-weight="normal"/>
     </style:style>
     <style:style style:name="Status" style:family="table-cell" style:parent-style-name="Default"/>
     <style:style style:name="Good" style:family="table-cell" style:parent-style-name="Status">

@@ -1,5 +1,5 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-11 11:54:30
-+++ template-spreadsheets/mustache/content.xml	2023-10-11 20:58:08
++++ template-spreadsheets/mustache/content.xml	2023-10-11 21:03:49
 @@ -11,9 +11,13 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -24,7 +24,7 @@
        <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
      </style:style>
      <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
-@@ -37,9 +42,11 @@
+@@ -37,9 +42,12 @@
        <style:table-cell-properties fo:wrap-option="wrap"/>
      </style:style>
      <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default">
@@ -32,12 +32,13 @@
        <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
      </style:style>
 -    <style:style style:name="ce7" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
++    <style:style style:name="cell_hyperlink" style:family="table-cell" style:parent-style-name="Hyperlink"/>
 +    <style:style style:name="cell_number_1dp" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
 +    <style:style style:name="cell_number_with_commas" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="number_with_commas"/>
    </office:automatic-styles>
    <office:body>
      <office:spreadsheet>
-@@ -48,25 +55,25 @@
+@@ -48,25 +56,25 @@
          <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
@@ -72,14 +73,15 @@
        </table:table>
        <table:table table:name="Contents" table:style-name="ta1">
          <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
-@@ -90,37 +97,25 @@
+@@ -90,37 +98,25 @@
              <text:p>b</text:p>
            </table:table-cell>
          </table:table-row>
 +{{#sheets}}
          <table:table-row table:style-name="ro2">
-           <table:table-cell office:value-type="string" calcext:value-type="string">
+-          <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>Age</text:p>
++          <table:table-cell table:style-name="cell_hyperlink" office:value-type="string" calcext:value-type="string">
 +            <text:p><text:a xlink:href="#'{{sheetNumber}}'.A1" xlink:type="simple">Table {{sheetNumber}}</text:a></text:p>
            </table:table-cell>
            <table:table-cell office:value-type="string" calcext:value-type="string">
@@ -120,7 +122,7 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
-@@ -130,60 +125,41 @@
+@@ -130,60 +126,41 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
@@ -202,7 +204,7 @@
      </office:spreadsheet>
    </office:body>
 --- template-spreadsheets/mustache/styles.xml	2023-10-11 11:54:30
-+++ template-spreadsheets/mustache/styles.xml	2023-10-11 20:58:18
++++ template-spreadsheets/mustache/styles.xml	2023-10-11 21:02:08
 @@ -17,6 +17,9 @@
      <number:number-style style:name="N111">
        <number:number number:decimal-places="1" number:min-decimal-places="1" number:min-integer-digits="1"/>
@@ -213,8 +215,17 @@
      <style:style style:name="Default" style:family="table-cell">
        <style:text-properties style:font-name="Arial" fo:font-family="Arial" style:font-style-name="Regular" style:font-family-generic="swiss" style:font-pitch="variable" fo:font-size="12pt"/>
      </style:style>
+@@ -38,7 +41,7 @@
+       <style:text-properties fo:color="#808080" fo:font-size="10pt" fo:font-style="italic" fo:font-weight="normal"/>
+     </style:style>
+     <style:style style:name="Hyperlink" style:family="table-cell" style:parent-style-name="Text">
+-      <style:text-properties fo:color="#0000ee" fo:font-size="10pt" fo:font-style="normal" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="#0000ee" fo:font-weight="normal"/>
++      <style:text-properties fo:color="#0000ee" fo:font-size="12pt" fo:font-style="normal" style:text-underline-style="solid" style:text-underline-width="auto" style:text-underline-color="#0000ee" fo:font-weight="normal"/>
+     </style:style>
+     <style:style style:name="Status" style:family="table-cell" style:parent-style-name="Default"/>
+     <style:style style:name="Good" style:family="table-cell" style:parent-style-name="Status">
 --- template-spreadsheets/mustache/meta.xml	2023-10-11 11:54:30
-+++ template-spreadsheets/mustache/meta.xml	2023-10-11 20:58:08
++++ template-spreadsheets/mustache/meta.xml	2023-10-11 20:58:49
 @@ -6,6 +6,6 @@
      <meta:editing-duration>PT12M36S</meta:editing-duration>
      <meta:editing-cycles>14</meta:editing-cycles>
@@ -224,7 +235,7 @@
    </office:meta>
  </office:document-meta>
 --- template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-11 11:40:34
-+++ template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-11 20:58:08
++++ template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-11 20:58:49
 @@ -3,9 +3,5 @@
    <manifest:file-entry manifest:full-path="/" manifest:version="1.3" manifest:media-type="application/vnd.oasis.opendocument.spreadsheet"/>
    <manifest:file-entry manifest:full-path="meta.xml" manifest:media-type="text/xml"/>

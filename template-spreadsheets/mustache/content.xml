@@ -45,6 +45,7 @@
       <style:table-cell-properties fo:wrap-option="wrap"/>
       <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
     </style:style>
+    <style:style style:name="cell_hyperlink" style:family="table-cell" style:parent-style-name="Hyperlink"/>
     <style:style style:name="cell_number_1dp" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
     <style:style style:name="cell_number_with_commas" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="number_with_commas"/>
   </office:automatic-styles>
@@ -99,7 +100,7 @@
         </table:table-row>
 {{#sheets}}
         <table:table-row table:style-name="ro2">
-          <table:table-cell office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="cell_hyperlink" office:value-type="string" calcext:value-type="string">
             <text:p><text:a xlink:href="#'{{sheetNumber}}'.A1" xlink:type="simple">Table {{sheetNumber}}</text:a></text:p>
           </table:table-cell>
           <table:table-cell office:value-type="string" calcext:value-type="string">
