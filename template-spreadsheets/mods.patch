@@ -1,20 +1,22 @@
 --- template-spreadsheets/handlebars/content.xml	2023-10-11 11:54:30
-+++ template-spreadsheets/handlebars/content.xml	2023-10-11 12:26:06
-@@ -11,9 +11,11 @@
++++ template-spreadsheets/handlebars/content.xml	2023-10-11 12:55:39
+@@ -11,9 +11,13 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
      </style:style>
 -    <style:style style:name="co2" style:family="table-column">
 -      <style:table-column-properties fo:break-before="auto" style:column-width="6.567cm"/>
 +{{#each sheets}}
-+    <style:style style:name="{{firstColumnStyleName}}" style:family="table-column">
-+      <style:table-column-properties fo:break-before="auto" style:column-width="{{firstColumnWidthCm}}cm"/>
++  {{#each columnStyles}}
++    <style:style style:name="{{name}}" style:family="table-column">
++      <style:table-column-properties fo:break-before="auto" style:column-width="{{widthCm}}cm"/>
      </style:style>
++  {{/each}}
 +{{/each}}
      <style:style style:name="co3" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="15.723cm"/>
      </style:style>
-@@ -30,6 +32,7 @@
+@@ -30,6 +34,7 @@
        <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
      </style:style>
      <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default">
@@ -22,7 +24,7 @@
        <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
      </style:style>
      <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
-@@ -37,9 +40,11 @@
+@@ -37,9 +42,11 @@
        <style:table-cell-properties fo:wrap-option="wrap"/>
      </style:style>
      <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default">
@@ -35,7 +37,7 @@
    </office:automatic-styles>
    <office:body>
      <office:spreadsheet>
-@@ -48,25 +53,24 @@
+@@ -48,25 +55,24 @@
          <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
@@ -69,7 +71,7 @@
        </table:table>
        <table:table table:name="Contents" table:style-name="ta1">
          <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
-@@ -90,37 +94,24 @@
+@@ -90,37 +96,25 @@
              <text:p>b</text:p>
            </table:table-cell>
          </table:table-row>
@@ -104,10 +106,12 @@
        </table:table>
 -      <table:table table:name="Age" table:style-name="ta1">
 -        <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
+-        <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
 +{{#each sheets}}
 +      <table:table table:name="{{sheetNumber}}" table:style-name="ta1">
-+        <table:table-column table:style-name="{{firstColumnStyleName}}" table:default-cell-style-name="Default"/>
-         <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
++  {{#each columnStyles}}
++        <table:table-column table:style-name="{{name}}" table:default-cell-style-name="Default"/>
++  {{/each}}
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
 -            <text:p>Age title</text:p>
@@ -115,7 +119,7 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
-@@ -130,60 +121,41 @@
+@@ -130,60 +124,41 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>

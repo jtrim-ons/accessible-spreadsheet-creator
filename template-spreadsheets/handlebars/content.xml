@@ -12,9 +12,11 @@
       <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
     </style:style>
 {{#each sheets}}
-    <style:style style:name="{{firstColumnStyleName}}" style:family="table-column">
-      <style:table-column-properties fo:break-before="auto" style:column-width="{{firstColumnWidthCm}}cm"/>
+  {{#each columnStyles}}
+    <style:style style:name="{{name}}" style:family="table-column">
+      <style:table-column-properties fo:break-before="auto" style:column-width="{{widthCm}}cm"/>
     </style:style>
+  {{/each}}
 {{/each}}
     <style:style style:name="co3" style:family="table-column">
       <style:table-column-properties fo:break-before="auto" style:column-width="15.723cm"/>
@@ -107,8 +109,9 @@
       </table:table>
 {{#each sheets}}
       <table:table table:name="{{sheetNumber}}" table:style-name="ta1">
-        <table:table-column table:style-name="{{firstColumnStyleName}}" table:default-cell-style-name="Default"/>
-        <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
+  {{#each columnStyles}}
+        <table:table-column table:style-name="{{name}}" table:default-cell-style-name="Default"/>
+  {{/each}}
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
             <text:p>{{sheetName}}</text:p>

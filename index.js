@@ -35,14 +35,22 @@ export default function createZip(odsData, Handlebars) {
 		const introTextLength = sheet.sheetIntroText ? sheet.sheetIntroText.length : 0;
 		sheet.firstTableCell = cellRef(1, 3 + introTextLength);
 		sheet.lastTableCell = cellRef(1 + sheet.rowData[0].values.length, 3 + sheet.rowData.length + introTextLength);
-		sheet.firstColumnStyleName = 'firstColStyle' + i;
-		// 37.8 pixels per cm, and add a bit in case the width is inaccurate:
-		sheet.firstColumnWidthCm = (Math.max(
-			...sheet.rowData.map(d => approxTextWidth(d.name))
-		) / 37.8 + 0.5).toFixed(2);
+
 		for (const row of sheet.rowData) {
 			row.valuesFormatted = formatValues(row.values, sheet.numberStyles);
 		}
+
+		sheet.columnStyles = [
+			{name: 'firstColStyle' + i, widthCm: columnWidth(sheet.rowData.map(d => d.name))}
+		];
+
+		for (let j = 0; j < sheet.numberStyles.length; j++) {
+			const widthCm = Math.max(2.4, columnWidth(sheet.rowData.map(d => d.valuesFormatted[j].displayValue)));
+			sheet.columnStyles.push(
+				{name: 'colStyle' + i + '_' + j, widthCm}
+			);
+		}
+
 		i++;
 	}
 
@@ -54,6 +62,12 @@ export default function createZip(odsData, Handlebars) {
 	}
 
 	return result;
+}
+
+function columnWidth(strings) {
+	const maxPixelWidth = Math.max(...strings.map(d => approxTextWidth(d)));
+	// 37.8 pixels per cm, and add a bit in case the width is inaccurate:
+	return ((maxPixelWidth / 37.8) + 0.5).toFixed(2);
 }
 
 function approxTextWidth(text) {
