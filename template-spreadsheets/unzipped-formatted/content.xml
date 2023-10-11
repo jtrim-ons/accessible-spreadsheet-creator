@@ -67,7 +67,10 @@
           <table:table-cell/>
         </table:table-row>
         <table:table-row table:style-name="ro2">
-          <table:table-cell table:number-columns-repeated="2"/>
+          <table:table-cell office:value-type="string" calcext:value-type="string">
+            <text:p>This worksheet contains one table.</text:p>
+          </table:table-cell>
+          <table:table-cell/>
         </table:table-row>
         <table:table-row table:style-name="ro2">
           <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
@@ -112,7 +115,10 @@
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
         <table:table-row table:style-name="ro2">
-          <table:table-cell table:number-columns-repeated="3"/>
+          <table:table-cell office:value-type="string" calcext:value-type="string">
+            <text:p>This worksheet contains one table.</text:p>
+          </table:table-cell>
+          <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
         <table:table-row table:style-name="ro2">
           <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
