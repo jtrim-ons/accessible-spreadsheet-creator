@@ -67,13 +67,20 @@
           </table:table-cell>
         </table:table-row>
 {{/isSubtitle}}
-{{^isSubtitle}}
+{{#isText}}
         <table:table-row table:style-name="ro2">
           <table:table-cell table:style-name="ce5" office:value-type="string" calcext:value-type="string">
             <text:p>{{text}}</text:p>
           </table:table-cell>
         </table:table-row>
-{{/isSubtitle}}
+{{/isText}}
+{{#isHyperlink}}
+        <table:table-row table:style-name="ro2">
+          <table:table-cell table:style-name="cell_hyperlink" office:value-type="string" calcext:value-type="string">
+            <text:p><text:a xlink:href="{{href}}" xlink:type="simple">{{text}}</text:a></text:p>
+          </table:table-cell>
+        </table:table-row>
+{{/isHyperlink}}
 {{/coverSheetContents}}
       </table:table>
       <table:table table:name="Contents" table:style-name="ta1">

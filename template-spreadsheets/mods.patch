@@ -1,5 +1,5 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-11 11:54:30
-+++ template-spreadsheets/mustache/content.xml	2023-10-11 21:03:49
++++ template-spreadsheets/mustache/content.xml	2023-10-11 21:22:26
 @@ -11,9 +11,13 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -38,7 +38,7 @@
    </office:automatic-styles>
    <office:body>
      <office:spreadsheet>
-@@ -48,25 +56,25 @@
+@@ -48,25 +56,32 @@
          <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
@@ -55,7 +55,7 @@
            </table:table-cell>
          </table:table-row>
 +{{/isSubtitle}}
-+{{^isSubtitle}}
++{{#isText}}
          <table:table-row table:style-name="ro2">
            <table:table-cell table:style-name="ce5" office:value-type="string" calcext:value-type="string">
 -            <text:p>Section text</text:p>
@@ -65,15 +65,20 @@
 -        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048572">
 -          <table:table-cell/>
 -        </table:table-row>
--        <table:table-row table:style-name="ro2">
++{{/isText}}
++{{#isHyperlink}}
+         <table:table-row table:style-name="ro2">
 -          <table:table-cell/>
--        </table:table-row>
-+{{/isSubtitle}}
++          <table:table-cell table:style-name="cell_hyperlink" office:value-type="string" calcext:value-type="string">
++            <text:p><text:a xlink:href="{{href}}" xlink:type="simple">{{text}}</text:a></text:p>
++          </table:table-cell>
+         </table:table-row>
++{{/isHyperlink}}
 +{{/coverSheetContents}}
        </table:table>
        <table:table table:name="Contents" table:style-name="ta1">
          <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
-@@ -90,37 +98,25 @@
+@@ -90,37 +105,25 @@
              <text:p>b</text:p>
            </table:table-cell>
          </table:table-row>
@@ -122,7 +127,7 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
-@@ -130,60 +126,41 @@
+@@ -130,60 +133,41 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>

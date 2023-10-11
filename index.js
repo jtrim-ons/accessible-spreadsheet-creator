@@ -30,6 +30,18 @@ export default function createZip(odsData) {
 	odsData.firstTocCell = cellRef(1, 3);
 	odsData.lastTocCell = cellRef(2, 3 + odsData.sheets.length);
 
+	for (const item of odsData.coverSheetContents) {
+		if (item.type === 'subtitle') {
+			item.isSubtitle = true;
+		} else if (item.type === 'text') {
+			item.isText = true;
+		} else if (item.type === 'hyperlink') {
+			item.isHyperlink = true;
+		} else {
+			throw new Error('Unexpected cover sheet content type: ' + item.type);
+		}
+	}
+
 	let i = 0;
 	for (const sheet of odsData.sheets) {
 		sheet.sheetNumber = i + 1;
