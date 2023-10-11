@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -rf template-spreadsheets/handlebars/
-cp -r template-spreadsheets/unzipped-formatted/ template-spreadsheets/handlebars
+rm -rf template-spreadsheets/mustache/
+cp -r template-spreadsheets/unzipped-formatted/ template-spreadsheets/mustache
 
 patch < template-spreadsheets/mods.patch

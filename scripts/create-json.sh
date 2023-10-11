@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-cd template-spreadsheets/handlebars
+cd template-spreadsheets/mustache
 
 (
 echo 'export default [';

@@ -1,5 +1,5 @@
---- template-spreadsheets/handlebars/content.xml	2023-10-11 11:54:30
-+++ template-spreadsheets/handlebars/content.xml	2023-10-11 14:19:53
+--- template-spreadsheets/mustache/content.xml	2023-10-11 11:54:30
++++ template-spreadsheets/mustache/content.xml	2023-10-11 14:19:53
 @@ -11,9 +11,13 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -201,8 +201,8 @@
        </table:database-ranges>
      </office:spreadsheet>
    </office:body>
---- template-spreadsheets/handlebars/meta.xml	2023-10-11 11:54:30
-+++ template-spreadsheets/handlebars/meta.xml	2023-10-11 11:54:40
+--- template-spreadsheets/mustache/meta.xml	2023-10-11 11:54:30
++++ template-spreadsheets/mustache/meta.xml	2023-10-11 11:54:40
 @@ -6,6 +6,6 @@
      <meta:editing-duration>PT12M36S</meta:editing-duration>
      <meta:editing-cycles>14</meta:editing-cycles>
@@ -211,8 +211,8 @@
 +    <meta:document-statistic meta:table-count="{{tableCount}}" meta:object-count="0"/>
    </office:meta>
  </office:document-meta>
---- template-spreadsheets/handlebars/META-INF/manifest.xml	2023-10-11 11:40:34
-+++ template-spreadsheets/handlebars/META-INF/manifest.xml	2023-10-11 11:54:40
+--- template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-11 11:40:34
++++ template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-11 11:54:40
 @@ -3,9 +3,5 @@
    <manifest:file-entry manifest:full-path="/" manifest:version="1.3" manifest:media-type="application/vnd.oasis.opendocument.spreadsheet"/>
    <manifest:file-entry manifest:full-path="meta.xml" manifest:media-type="text/xml"/>
