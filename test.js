@@ -28,7 +28,7 @@ const odsData = {
 	tableHeadings: [
 		'Category',
 		'Selected group',
-		'England and Wales',
+		'England and Wales with a really long title',
 	],
 	sheets: [
 		{
