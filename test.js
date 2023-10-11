@@ -35,14 +35,16 @@ const odsData = {
 			sheetName: 'Age',
 			tableName: 'Age',
 			sheetIntroText: ['Some introductory text'],
+			numberStyles: ['cell_number_with_commas', 'cell_number_1dp'],
 			rowData: [
-				{name: 'First category', values: [12.3, 45.6]},
-				{name: 'Second category', values: [12.3, 45.6]},
+				{name: 'First category', values: [12_345, 45.6]},
+				{name: 'Second category', values: [1_234_567, 45.6]},
 			],
 		},
 		{
 			sheetName: 'Ethnicity',
 			tableName: 'Ethnicity',
+			numberStyles: ['cell_number_1dp', 'cell_number_1dp'],
 			rowData: [
 				{name: 'First category', values: [12.3, 45.6]},
 				{name: 'Second category', values: [12.3, 45.6]},

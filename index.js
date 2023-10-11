@@ -8,6 +8,22 @@ function cellRef(col, row) {
 	return String.fromCodePoint('A'.codePointAt(0) - 1 + col) + row;
 }
 
+function formatValues(values, numberStyles) {
+	if (values.length != numberStyles.length) throw new Error("Unexpected numberStyles length");
+	return values.map((d, i) => {
+		const cellFormat = numberStyles[i];
+		if (!['cell_number_with_commas', 'cell_number_1dp'].includes(cellFormat)) {
+			throw new Error('Unrecognised number format: ' + cellFormat);
+		}
+
+		const displayValue = cellFormat === 'cell_number_with_commas'
+			? d.toLocaleString('en-GB')
+			: d.toFixed(1);
+
+		return {rawValue: d, displayValue, cellFormat};
+	});
+}
+
 export default function createZip(odsData, Handlebars) {
 	odsData.tableCount = odsData.sheets.length + 1; // Add 1 for cover sheet TODO add another for contents?
 	odsData.firstTocCell = cellRef(1, 3);
@@ -24,6 +40,9 @@ export default function createZip(odsData, Handlebars) {
 		sheet.firstColumnWidthCm = (Math.max(
 			...sheet.rowData.map(d => approxTextWidth(d.name))
 		) / 37.8 + 0.5).toFixed(2);
+		for (const row of sheet.rowData) {
+			row.valuesFormatted = formatValues(row.values, sheet.numberStyles);
+		}
 		i++;
 	}
 

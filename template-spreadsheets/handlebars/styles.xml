@@ -17,6 +17,9 @@
     <number:number-style style:name="N111">
       <number:number number:decimal-places="1" number:min-decimal-places="1" number:min-integer-digits="1"/>
     </number:number-style>
+    <number:number-style style:name="number_with_commas">
+      <number:number number:decimal-places="0" number:min-decimal-places="0" number:min-integer-digits="1" number:grouping="true"/>
+    </number:number-style>
     <style:style style:name="Default" style:family="table-cell">
       <style:text-properties style:font-name="Arial" fo:font-family="Arial" style:font-style-name="Regular" style:font-family-generic="swiss" style:font-pitch="variable" fo:font-size="12pt"/>
     </style:style>
