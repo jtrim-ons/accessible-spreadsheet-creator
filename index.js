@@ -16,8 +16,9 @@ export default function createZip(odsData, Handlebars) {
 	let i = 0;
 	for (const sheet of odsData.sheets) {
 		sheet.sheetNumber = i + 1;
-		sheet.firstTableCell = cellRef(1, 3);
-		sheet.lastTableCell = cellRef(1 + sheet.rowData[0].values.length, 3 + sheet.rowData.length);
+		const introTextLength = sheet.sheetIntroText ? sheet.sheetIntroText.length : 0;
+		sheet.firstTableCell = cellRef(1, 3 + introTextLength);
+		sheet.lastTableCell = cellRef(1 + sheet.rowData[0].values.length, 3 + sheet.rowData.length + introTextLength);
 		sheet.firstColumnStyleName = 'firstColStyle' + i;
 		// 37.8 pixels per cm, and add a bit in case the width is inaccurate:
 		sheet.firstColumnWidthCm = (Math.max(
