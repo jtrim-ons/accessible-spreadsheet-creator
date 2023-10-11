@@ -132,7 +132,6 @@
 {{/each}}
       <table:named-expressions/>
       <table:database-ranges>
-        <table:database-range table:name="selected_characteristics" table:target-range-address="'Cover sheet'.{{firstCharacteristicsCell}}:'Cover sheet'.{{lastCharacteristicsCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
         <table:database-range table:name="table_of_contents" table:target-range-address="'Contents'.{{firstTocCell}}:'Contents'.{{lastTocCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
 {{#each sheets}}
         <table:database-range table:name="{{tableName}}" table:target-range-address="'{{sheetNumber}}'.{{firstTableCell}}:'{{sheetNumber}}'.{{lastTableCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
