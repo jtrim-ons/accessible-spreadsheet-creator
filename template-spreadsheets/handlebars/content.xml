@@ -109,6 +109,14 @@
           </table:table-cell>
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
+{{#each sheetIntroText}}
+        <table:table-row table:style-name="ro2">
+          <table:table-cell office:value-type="string" calcext:value-type="string">
+            <text:p>{{this}}</text:p>
+          </table:table-cell>
+          <table:table-cell table:number-columns-repeated="2"/>
+        </table:table-row>
+{{/each}}
         <table:table-row table:style-name="ro2">
 {{#each ../tableHeadings}}
           <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">

@@ -1,5 +1,5 @@
---- template-spreadsheets/handlebars/content.xml	2023-10-11 09:44:10
-+++ template-spreadsheets/handlebars/content.xml	2023-10-10 23:41:33
+--- template-spreadsheets/handlebars/content.xml	2023-10-11 09:46:26
++++ template-spreadsheets/handlebars/content.xml	2023-10-11 09:59:41
 @@ -11,9 +11,11 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -52,7 +52,7 @@
        </table:table>
        <table:table table:name="Contents" table:style-name="ta1">
          <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
-@@ -77,37 +79,24 @@
+@@ -80,37 +82,24 @@
              <text:p>b</text:p>
            </table:table-cell>
          </table:table-row>
@@ -98,62 +98,68 @@
            </table:table-cell>
            <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
-@@ -115,59 +104,33 @@
-           <table:table-cell table:number-columns-repeated="3"/>
-         </table:table-row>
-         <table:table-row table:style-name="ro2">
-+{{#each ../tableHeadings}}
-           <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
--            <text:p>a</text:p>
-+            <text:p>{{this}}</text:p>
+@@ -120,60 +109,41 @@
            </table:table-cell>
+           <table:table-cell table:number-columns-repeated="2"/>
+         </table:table-row>
++{{#each sheetIntroText}}
+         <table:table-row table:style-name="ro2">
+-          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
+-            <text:p>a</text:p>
+-          </table:table-cell>
 -          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
 -            <text:p>b</text:p>
 -          </table:table-cell>
 -          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
 -            <text:p>c</text:p>
 -          </table:table-cell>
-+{{/each}}
-         </table:table-row>
-+{{#each rowData}}
-         <table:table-row table:style-name="ro2">
+-        </table:table-row>
+-        <table:table-row table:style-name="ro2">
            <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>x</text:p>
-+            <text:p>{{name}}</text:p>
++            <text:p>{{this}}</text:p>
            </table:table-cell>
 -          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="1" calcext:value-type="float">
 -            <text:p>1.0</text:p>
-+{{#each values}}
-+          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
-+            <text:p>{{this}}</text:p>
-           </table:table-cell>
+-          </table:table-cell>
 -          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="2" calcext:value-type="float">
 -            <text:p>2.0</text:p>
 -          </table:table-cell>
-+{{/each}}
++          <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
--        <table:table-row table:style-name="ro2">
++{{/each}}
+         <table:table-row table:style-name="ro2">
 -          <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>y</text:p>
--          </table:table-cell>
++{{#each ../tableHeadings}}
++          <table:table-cell table:style-name="ce1" office:value-type="string" calcext:value-type="string">
++            <text:p>{{this}}</text:p>
+           </table:table-cell>
 -          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="3" calcext:value-type="float">
 -            <text:p>3.0</text:p>
 -          </table:table-cell>
 -          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="4" calcext:value-type="float">
 -            <text:p>4.0</text:p>
 -          </table:table-cell>
--        </table:table-row>
--        <table:table-row table:style-name="ro2">
--          <table:table-cell office:value-type="string" calcext:value-type="string">
++{{/each}}
+         </table:table-row>
++{{#each rowData}}
+         <table:table-row table:style-name="ro2">
+           <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>z</text:p>
--          </table:table-cell>
++            <text:p>{{name}}</text:p>
+           </table:table-cell>
 -          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="5" calcext:value-type="float">
 -            <text:p>5.0</text:p>
--          </table:table-cell>
++{{#each values}}
++          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="{{this}}" calcext:value-type="float">
++            <text:p>{{this}}</text:p>
+           </table:table-cell>
 -          <table:table-cell table:style-name="ce2" office:value-type="float" office:value="6" calcext:value-type="float">
 -            <text:p>6.0</text:p>
 -          </table:table-cell>
--        </table:table-row>
++{{/each}}
+         </table:table-row>
 -        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
 -          <table:table-cell table:number-columns-repeated="3"/>
 -        </table:table-row>
@@ -166,7 +172,6 @@
        <table:named-expressions/>
        <table:database-ranges>
 -        <table:database-range table:name="here_is_a_table" table:target-range-address="Contents.A3:Contents.B5" table:on-update-keep-styles="true" table:on-update-keep-size="false" table:orientation="column"/>
-+        <table:database-range table:name="selected_characteristics" table:target-range-address="'Cover sheet'.{{firstCharacteristicsCell}}:'Cover sheet'.{{lastCharacteristicsCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
 +        <table:database-range table:name="table_of_contents" table:target-range-address="'Contents'.{{firstTocCell}}:'Contents'.{{lastTocCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
 +{{#each sheets}}
 +        <table:database-range table:name="{{tableName}}" table:target-range-address="'{{sheetNumber}}'.{{firstTableCell}}:'{{sheetNumber}}'.{{lastTableCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
@@ -174,18 +179,18 @@
        </table:database-ranges>
      </office:spreadsheet>
    </office:body>
---- template-spreadsheets/handlebars/meta.xml	2023-10-11 09:44:10
-+++ template-spreadsheets/handlebars/meta.xml	2023-10-10 22:33:37
+--- template-spreadsheets/handlebars/meta.xml	2023-10-11 09:46:26
++++ template-spreadsheets/handlebars/meta.xml	2023-10-11 09:47:28
 @@ -6,6 +6,6 @@
-     <meta:editing-duration>PT11M28S</meta:editing-duration>
-     <meta:editing-cycles>12</meta:editing-cycles>
+     <meta:editing-duration>PT11M54S</meta:editing-duration>
+     <meta:editing-cycles>13</meta:editing-cycles>
      <meta:generator>LibreOffice/7.0.6.2$MacOSX_X86_64 LibreOffice_project/144abb84a525d8e30c9dbbefa69cbbf2d8d4ae3b</meta:generator>
 -    <meta:document-statistic meta:table-count="3" meta:cell-count="25" meta:object-count="0"/>
 +    <meta:document-statistic meta:table-count="{{tableCount}}" meta:object-count="0"/>
    </office:meta>
  </office:document-meta>
---- template-spreadsheets/handlebars/META-INF/manifest.xml	2023-10-10 23:40:32
-+++ template-spreadsheets/handlebars/META-INF/manifest.xml	2023-10-10 22:33:37
+--- template-spreadsheets/handlebars/META-INF/manifest.xml	2023-10-11 09:46:26
++++ template-spreadsheets/handlebars/META-INF/manifest.xml	2023-10-11 09:47:28
 @@ -3,9 +3,5 @@
    <manifest:file-entry manifest:full-path="/" manifest:version="1.3" manifest:media-type="application/vnd.oasis.opendocument.spreadsheet"/>
    <manifest:file-entry manifest:full-path="meta.xml" manifest:media-type="text/xml"/>

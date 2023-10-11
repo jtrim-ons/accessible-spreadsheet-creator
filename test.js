@@ -33,6 +33,7 @@ const odsData = {
 		{
 			sheetName: 'Age',
 			tableName: 'Age',
+			sheetIntroText: ['Some introductory text'],
 			rowData: [
 				{name: 'First category', values: [12.3, 45.6]},
 				{name: 'Second category', values: [12.3, 45.6]},
