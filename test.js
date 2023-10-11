@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 import JSZip from 'jszip';
-import Handlebars from 'handlebars';
 import accessibleSpreadsheetCreator from './index.js';
 //import test from 'ava';
 
@@ -25,17 +24,17 @@ const odsData = {
 		{isSubtitle: false, text: 'Text 2a'},
 		{isSubtitle: false, text: 'Text 2b'},
 	],
-	tableHeadings: [
-		'Category',
-		'Selected group',
-		'England and Wales with a really long title',
-	],
 	sheets: [
 		{
 			sheetName: 'Age',
 			tableName: 'Age',
 			sheetIntroText: ['Some introductory text'],
 			numberStyles: ['cell_number_with_commas', 'cell_number_1dp'],
+			tableHeadings: [
+				'Category',
+				'Selected group',
+				'England and Wales with a really long title',
+			],
 			rowData: [
 				{name: 'First category', values: [12_345, 45.6]},
 				{name: 'Second category', values: [1_234_567, 45.6]},
@@ -45,6 +44,11 @@ const odsData = {
 			sheetName: 'Ethnicity',
 			tableName: 'Ethnicity',
 			numberStyles: ['cell_number_1dp', 'cell_number_1dp'],
+			tableHeadings: [
+				'Category',
+				'Selected group',
+				'England and Wales with a really long title',
+			],
 			rowData: [
 				{name: 'First category', values: [12.3, 45.6]},
 				{name: 'Second category', values: [12.3, 45.6]},
@@ -54,7 +58,7 @@ const odsData = {
 	],
 };
 
-const zipFiles = accessibleSpreadsheetCreator(odsData, Handlebars);
+const zipFiles = accessibleSpreadsheetCreator(odsData);
 
 const zip = new JSZip();
 for (const {filename, contents} of zipFiles) {

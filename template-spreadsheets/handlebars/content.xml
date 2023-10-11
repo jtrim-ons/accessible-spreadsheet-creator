@@ -11,13 +11,13 @@
     <style:style style:name="co1" style:family="table-column">
       <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
     </style:style>
-{{#each sheets}}
-  {{#each columnStyles}}
+{{#sheets}}
+  {{#columnStyles}}
     <style:style style:name="{{name}}" style:family="table-column">
       <style:table-column-properties fo:break-before="auto" style:column-width="{{widthCm}}cm"/>
     </style:style>
-  {{/each}}
-{{/each}}
+  {{/columnStyles}}
+{{/sheets}}
     <style:style style:name="co3" style:family="table-column">
       <style:table-column-properties fo:break-before="auto" style:column-width="15.723cm"/>
     </style:style>
@@ -58,21 +58,22 @@
             <text:p>{{coverSheetTitle}}</text:p>
           </table:table-cell>
         </table:table-row>
-{{#each coverSheetContents}}
-{{#if isSubtitle}}
+{{#coverSheetContents}}
+{{#isSubtitle}}
         <table:table-row table:style-name="ro3">
           <table:table-cell table:style-name="Heading_20_2" office:value-type="string" calcext:value-type="string">
             <text:p>{{text}}</text:p>
           </table:table-cell>
         </table:table-row>
-{{else}}
+{{/isSubtitle}}
+{{^isSubtitle}}
         <table:table-row table:style-name="ro2">
           <table:table-cell table:style-name="ce5" office:value-type="string" calcext:value-type="string">
             <text:p>{{text}}</text:p>
           </table:table-cell>
         </table:table-row>
-{{/if}}
-{{/each}}
+{{/isSubtitle}}
+{{/coverSheetContents}}
       </table:table>
       <table:table table:name="Contents" table:style-name="ta1">
         <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
@@ -96,7 +97,7 @@
             <text:p>b</text:p>
           </table:table-cell>
         </table:table-row>
-{{#each sheets}}
+{{#sheets}}
         <table:table-row table:style-name="ro2">
           <table:table-cell office:value-type="string" calcext:value-type="string">
             <text:p><text:a xlink:href="#'{{sheetNumber}}'.A1" xlink:type="simple">Table {{sheetNumber}}</text:a></text:p>
@@ -105,13 +106,13 @@
             <text:p>{{sheetName}}</text:p>
           </table:table-cell>
         </table:table-row>
-{{/each}}
+{{/sheets}}
       </table:table>
-{{#each sheets}}
+{{#sheets}}
       <table:table table:name="{{sheetNumber}}" table:style-name="ta1">
-  {{#each columnStyles}}
+  {{#columnStyles}}
         <table:table-column table:style-name="{{name}}" table:default-cell-style-name="Default"/>
-  {{/each}}
+  {{/columnStyles}}
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
             <text:p>{{sheetName}}</text:p>
@@ -124,41 +125,41 @@
           </table:table-cell>
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
-{{#each sheetIntroText}}
+{{#sheetIntroText}}
         <table:table-row table:style-name="ro2">
           <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>{{this}}</text:p>
+            <text:p>{{.}}</text:p>
           </table:table-cell>
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
-{{/each}}
+{{/sheetIntroText}}
         <table:table-row table:style-name="ro2">
-{{#each ../tableHeadings}}
+{{#tableHeadings}}
           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
-            <text:p>{{this}}</text:p>
+            <text:p>{{.}}</text:p>
           </table:table-cell>
-{{/each}}
+{{/tableHeadings}}
         </table:table-row>
-{{#each rowData}}
+{{#rowData}}
         <table:table-row table:style-name="ro2">
           <table:table-cell office:value-type="string" calcext:value-type="string">
             <text:p>{{name}}</text:p>
           </table:table-cell>
-{{#each valuesFormatted}}
+{{#valuesFormatted}}
           <table:table-cell table:style-name="{{cellFormat}}" office:value-type="float" office:value="{{rawValue}}" calcext:value-type="float">
             <text:p>{{displayValue}}</text:p>
           </table:table-cell>
-{{/each}}
+{{/valuesFormatted}}
         </table:table-row>
-{{/each}}
+{{/rowData}}
       </table:table>
-{{/each}}
+{{/sheets}}
       <table:named-expressions/>
       <table:database-ranges>
         <table:database-range table:name="table_of_contents" table:target-range-address="'Contents'.{{firstTocCell}}:'Contents'.{{lastTocCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
-{{#each sheets}}
+{{#sheets}}
         <table:database-range table:name="{{tableName}}" table:target-range-address="'{{sheetNumber}}'.{{firstTableCell}}:'{{sheetNumber}}'.{{lastTableCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
-{{/each}}
+{{/sheets}}
       </table:database-ranges>
     </office:spreadsheet>
   </office:body>

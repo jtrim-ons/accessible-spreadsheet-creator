@@ -1,4 +1,5 @@
 import odsTemplate from './template-spreadsheets/template.js';
+import Mustache from 'mustache';
 
 // Put `mimetype` file first in the zip file so that file type detectors will
 // recognise the ODS file.
@@ -24,7 +25,7 @@ function formatValues(values, numberStyles) {
 	});
 }
 
-export default function createZip(odsData, Handlebars) {
+export default function createZip(odsData) {
 	odsData.tableCount = odsData.sheets.length + 1; // Add 1 for cover sheet TODO add another for contents?
 	odsData.firstTocCell = cellRef(1, 3);
 	odsData.lastTocCell = cellRef(2, 3 + odsData.sheets.length);
@@ -57,8 +58,7 @@ export default function createZip(odsData, Handlebars) {
 	const result = [];
 
 	for (const item of odsTemplate) {
-		const template = Handlebars.compile(item.contents);
-		result.push({filename: item.filename, contents: template(odsData)});
+		result.push({filename: item.filename, contents: Mustache.render(item.contents, odsData)});
 	}
 
 	return result;
