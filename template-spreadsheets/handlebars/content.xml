@@ -51,7 +51,7 @@
         <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
-            <text:p>Cover sheet title</text:p>
+            <text:p>{{coverSheetTitle}}</text:p>
           </table:table-cell>
         </table:table-row>
 {{#each coverSheetContents}}

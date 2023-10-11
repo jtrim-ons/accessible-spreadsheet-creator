@@ -1,5 +1,5 @@
 --- template-spreadsheets/handlebars/content.xml	2023-10-11 10:07:22
-+++ template-spreadsheets/handlebars/content.xml	2023-10-11 10:15:37
++++ template-spreadsheets/handlebars/content.xml	2023-10-11 10:59:15
 @@ -11,9 +11,11 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -22,8 +22,12 @@
        <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
      </style:style>
      <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
-@@ -51,22 +54,21 @@
-             <text:p>Cover sheet title</text:p>
+@@ -48,25 +51,24 @@
+         <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
+         <table:table-row table:style-name="ro1">
+           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
+-            <text:p>Cover sheet title</text:p>
++            <text:p>{{coverSheetTitle}}</text:p>
            </table:table-cell>
          </table:table-row>
 +{{#each coverSheetContents}}

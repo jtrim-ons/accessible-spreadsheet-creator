@@ -16,6 +16,7 @@ import accessibleSpreadsheetCreator from './index.js';
 //});
 
 const odsData = {
+	coverSheetTitle: 'Some pretend data',
 	coverSheetContents: [
 		{isSubtitle: true, text: 'Subtitle 1'},
 		{isSubtitle: false, text: 'Text 1a'},
