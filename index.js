@@ -59,31 +59,20 @@ function processNotes(odsData) {
 	for (const sheet of odsData.sheets) {
 		sheet.sheetIntroText ||= [];
 		sheet.hasNotes = false;
-		const matchReplacer = match => {
+		visitNotes(sheet, match => {
 			// Don't replace [[note_id]] yet...
 			notesMap.get(match.slice(2, -2)).used = true;
 			sheet.hasNotes = true;
 			return match;
-		};
-
-		visitNotes(sheet, matchReplacer);
-		if (sheet.hasNotes) {
-			sheet.sheetIntroText = [
-				'This worksheet contains one table. Some cells refer to notes, which can be found on the notes worksheet.',
-				...sheet.sheetIntroText
-			];
-		} else {
-			sheet.sheetIntroText = ['This worksheet contains one table.', ...sheet.sheetIntroText];
-		}
+		});
 	}
 
 	odsData.notes = odsData.notes.filter(n => n.used);
-	odsData.notes.forEach((n, i) => n.name = 'Note ' + (i + 1));
+	odsData.notes.forEach((n, i) => n.name = `[note ${i + 1}]`);
 
 	for (const sheet of odsData.sheets) {
 		if (sheet.hasNotes) {
-			const matchReplacer = match => `[${notesMap.get(match.slice(2, -2)).name.toLowerCase()}]`;
-			visitNotes(sheet, matchReplacer);
+			visitNotes(sheet, match => notesMap.get(match.slice(2, -2)).name);
 		}
 	}
 
@@ -110,6 +99,10 @@ export default function createZip(odsData) {
 	for (const sheet of odsData.sheets) {
 		sheet.sheetNumber = i + 1;
 		sheet.sheetIntroText ||= [];
+		const oneTableMessage = sheet.hasNotes
+			? 'This worksheet contains one table. Some cells refer to notes, which can be found on the notes worksheet.'
+			: 'This worksheet contains one table.';
+		sheet.sheetIntroText = [oneTableMessage, ...sheet.sheetIntroText];
 		const introTextLength = sheet.sheetIntroText.length;
 		sheet.introText = sheet.sheetIntroText.map((t, i) => ({text: t, isLastIntroRow: i === sheet.sheetIntroText.length - 1}));
 		sheet.firstTableCell = cellRef(1, 2 + introTextLength);
