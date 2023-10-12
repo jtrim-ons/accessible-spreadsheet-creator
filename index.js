@@ -25,11 +25,78 @@ function formatValues(values, numberStyles) {
 	});
 }
 
+function replaceNotes(t, tSetterCallback, matchReplacer) {
+	const noteRegExp = /\[\[[^\]]+\]\]/g;
+	tSetterCallback(t.replace(noteRegExp, matchReplacer));
+	return true;
+}
+
+function visitNotes(sheet, matchReplacer) {
+	replaceNotes(
+		sheet.sheetName, t => {
+			sheet.sheetName = t;
+		}, matchReplacer,
+	);
+	for (let i=0; i<sheet.sheetIntroText.length; i++) {
+		replaceNotes(
+			sheet.sheetIntroText[i], t => {
+				sheet.sheetIntroText[i] = t;
+			}, matchReplacer,
+		);
+	}
+}
+
+function processNotes(odsData) {
+	if (!odsData.notes) {
+		odsData.hasNotes = false;
+		return;
+	}
+
+	odsData.notes.forEach(n => n.used = false);
+
+	const notesMap = new Map(odsData.notes.map(note => [note.name, note]));
+
+	for (const sheet of odsData.sheets) {
+		sheet.sheetIntroText ||= [];
+		sheet.hasNotes = false;
+		const matchReplacer = match => {
+			// Don't replace [[note_id]] yet...
+			notesMap.get(match.slice(2, -2)).used = true;
+			sheet.hasNotes = true;
+			return match;
+		};
+
+		visitNotes(sheet, matchReplacer);
+		if (sheet.hasNotes) {
+			sheet.sheetIntroText = [
+				'This worksheet contains one table. Some cells refer to notes, which can be found on the notes worksheet.',
+				...sheet.sheetIntroText
+			];
+		} else {
+			sheet.sheetIntroText = ['This worksheet contains one table.', ...sheet.sheetIntroText];
+		}
+	}
+
+	odsData.notes = odsData.notes.filter(n => n.used);
+	odsData.notes.forEach((n, i) => n.name = 'Note ' + (i + 1));
+
+	for (const sheet of odsData.sheets) {
+		if (sheet.hasNotes) {
+			const matchReplacer = match => `[${notesMap.get(match.slice(2, -2)).name.toLowerCase()}]`;
+			visitNotes(sheet, matchReplacer);
+		}
+	}
+
+	odsData.hasNotes = odsData.notes.length > 0;
+}
+
 export default function createZip(odsData) {
 	odsData = JSON.parse(JSON.stringify(odsData));
 	odsData.tableCount = odsData.sheets.length + 1; // Add 1 for cover sheet TODO add another for contents?
 	odsData.firstTocCell = cellRef(1, 3);
 	odsData.lastTocCell = cellRef(2, 3 + odsData.sheets.length);
+
+	processNotes(odsData);
 
 	odsData.coverSheetContents = odsData.coverSheetContents.map(item =>
 		item.startsWith('## ')
@@ -44,10 +111,9 @@ export default function createZip(odsData) {
 		sheet.sheetNumber = i + 1;
 		sheet.sheetIntroText ||= [];
 		const introTextLength = sheet.sheetIntroText.length;
-		sheet.sheetIntroText = ['This worksheet contains one table.', ...sheet.sheetIntroText];
 		sheet.introText = sheet.sheetIntroText.map((t, i) => ({text: t, isLastIntroRow: i === sheet.sheetIntroText.length - 1}));
-		sheet.firstTableCell = cellRef(1, 3 + introTextLength);
-		sheet.lastTableCell = cellRef(1 + sheet.rowData[0].values.length, 3 + sheet.rowData.length + introTextLength);
+		sheet.firstTableCell = cellRef(1, 2 + introTextLength);
+		sheet.lastTableCell = cellRef(1 + sheet.rowData[0].values.length, 2 + sheet.rowData.length + introTextLength);
 
 		for (const row of sheet.rowData) {
 			row.valuesFormatted = formatValues(row.values, sheet.numberStyles);

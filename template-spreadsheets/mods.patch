@@ -1,6 +1,6 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-12 10:46:27
-+++ template-spreadsheets/mustache/content.xml	2023-10-12 10:52:24
-@@ -11,9 +11,13 @@
++++ template-spreadsheets/mustache/content.xml	2023-10-12 21:04:59
+@@ -11,12 +11,19 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
      </style:style>
@@ -16,7 +16,13 @@
      <style:style style:name="co3" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="15.723cm"/>
      </style:style>
-@@ -24,12 +28,13 @@
++    <style:style style:name="contents_and_notes_column_2" style:family="table-column">
++      <style:table-column-properties fo:break-before="auto" style:column-width="12cm"/>
++    </style:style>
+     <style:style style:name="ro1" style:family="table-row">
+       <style:table-row-properties style:row-height="0.778cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+     </style:style>
+@@ -24,12 +31,13 @@
        <style:table-row-properties style:row-height="0.529cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
      </style:style>
      <style:style style:name="ro3" style:family="table-row">
@@ -31,7 +37,7 @@
        <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
      </style:style>
      <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
-@@ -37,9 +42,15 @@
+@@ -37,9 +45,15 @@
        <style:table-cell-properties fo:wrap-option="wrap"/>
      </style:style>
      <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default">
@@ -48,7 +54,7 @@
    </office:automatic-styles>
    <office:body>
      <office:spreadsheet>
-@@ -48,25 +59,32 @@
+@@ -48,28 +62,36 @@
          <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
@@ -87,8 +93,13 @@
 +{{/coverSheetContents}}
        </table:table>
        <table:table table:name="Contents" table:style-name="ta1">
-         <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
-@@ -77,7 +95,7 @@
+-        <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
++        <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
++        <table:table-column table:style-name="contents_and_notes_column_2" table:default-cell-style-name="Default"/>
+         <table:table-row table:style-name="ro1">
+           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
+             <text:p>Contents</text:p>
+@@ -77,113 +99,119 @@
            <table:table-cell/>
          </table:table-row>
          <table:table-row table:style-name="ro2">
@@ -97,8 +108,15 @@
              <text:p>This worksheet contains one table.</text:p>
            </table:table-cell>
            <table:table-cell/>
-@@ -90,100 +108,70 @@
-             <text:p>b</text:p>
+         </table:table-row>
+         <table:table-row table:style-name="ro2">
+           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
+-            <text:p>a</text:p>
++            <text:p>Table</text:p>
+           </table:table-cell>
+           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
+-            <text:p>b</text:p>
++            <text:p>Name</text:p>
            </table:table-cell>
          </table:table-row>
 +{{#sheets}}
@@ -134,17 +152,66 @@
 -      <table:table table:name="Age" table:style-name="ta1">
 -        <table:table-column table:style-name="co2" table:default-cell-style-name="Default"/>
 -        <table:table-column table:style-name="co1" table:number-columns-repeated="2" table:default-cell-style-name="Default"/>
++{{#hasNotes}}
++      <table:table table:name="Notes" table:style-name="ta1">
++        <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
++        <table:table-column table:style-name="contents_and_notes_column_2" table:default-cell-style-name="Default"/>
+         <table:table-row table:style-name="ro1">
+           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
+-            <text:p>Age title</text:p>
++            <text:p>Notes</text:p>
+           </table:table-cell>
+-          <table:table-cell table:number-columns-repeated="2"/>
++          <table:table-cell/>
+         </table:table-row>
+         <table:table-row table:style-name="ro2">
+-          <table:table-cell office:value-type="string" calcext:value-type="string">
++          <table:table-cell table:style-name="cell_extra_padding_bottom" office:value-type="string" calcext:value-type="string">
+             <text:p>This worksheet contains one table.</text:p>
+           </table:table-cell>
+-          <table:table-cell table:number-columns-repeated="2"/>
++          <table:table-cell/>
+         </table:table-row>
+         <table:table-row table:style-name="ro2">
+           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
+-            <text:p>a</text:p>
++            <text:p>Number</text:p>
+           </table:table-cell>
+           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
+-            <text:p>b</text:p>
++            <text:p>Note</text:p>
+           </table:table-cell>
+-          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
+-            <text:p>c</text:p>
+-          </table:table-cell>
+         </table:table-row>
++{{#notes}}
+         <table:table-row table:style-name="ro2">
+           <table:table-cell office:value-type="string" calcext:value-type="string">
+-            <text:p>x</text:p>
++            <text:p>{{name}}</text:p>
+           </table:table-cell>
+-          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="1" calcext:value-type="float">
+-            <text:p>1.0</text:p>
++          <table:table-cell office:value-type="string" calcext:value-type="string">
++            <text:p>{{text}}</text:p>
+           </table:table-cell>
+-          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="2" calcext:value-type="float">
+-            <text:p>2.0</text:p>
++        </table:table-row>
++{{/notes}}
++      </table:table>
++{{/hasNotes}}
 +{{#sheets}}
 +      <table:table table:name="{{sheetNumber}}" table:style-name="ta1">
 +  {{#columnStyles}}
 +        <table:table-column table:style-name="{{name}}" table:default-cell-style-name="Default"/>
 +  {{/columnStyles}}
-         <table:table-row table:style-name="ro1">
-           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
--            <text:p>Age title</text:p>
++        <table:table-row table:style-name="ro1">
++          <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
 +            <text:p>{{sheetName}}</text:p>
            </table:table-cell>
-           <table:table-cell table:number-columns-repeated="2"/>
++          <table:table-cell table:number-columns-repeated="2"/>
          </table:table-row>
 +{{#introText}}
          <table:table-row table:style-name="ro2">
@@ -155,67 +222,42 @@
 +  {{/isLastIntroRow}}
 +  {{^isLastIntroRow}}
            <table:table-cell office:value-type="string" calcext:value-type="string">
--            <text:p>This worksheet contains one table.</text:p>
+-            <text:p>y</text:p>
 +            <text:p>{{text}}</text:p>
            </table:table-cell>
+-          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="3" calcext:value-type="float">
+-            <text:p>3.0</text:p>
 +  {{/isLastIntroRow}}
-           <table:table-cell table:number-columns-repeated="2"/>
--        </table:table-row>
++          <table:table-cell table:number-columns-repeated="2"/>
 +      </table:table-row>
 +{{/introText}}
-         <table:table-row table:style-name="ro2">
++        <table:table-row table:style-name="ro2">
 +{{#tableHeadings}}
-           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
--            <text:p>a</text:p>
++          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
 +            <text:p>{{.}}</text:p>
            </table:table-cell>
--          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
--            <text:p>b</text:p>
--          </table:table-cell>
--          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
--            <text:p>c</text:p>
+-          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="4" calcext:value-type="float">
+-            <text:p>4.0</text:p>
 -          </table:table-cell>
 +{{/tableHeadings}}
          </table:table-row>
 +{{#rowData}}
          <table:table-row table:style-name="ro2">
            <table:table-cell office:value-type="string" calcext:value-type="string">
--            <text:p>x</text:p>
+-            <text:p>z</text:p>
 +            <text:p>{{name}}</text:p>
            </table:table-cell>
--          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="1" calcext:value-type="float">
--            <text:p>1.0</text:p>
+-          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="5" calcext:value-type="float">
+-            <text:p>5.0</text:p>
 +{{#valuesFormatted}}
 +          <table:table-cell table:style-name="{{cellFormat}}" office:value-type="float" office:value="{{rawValue}}" calcext:value-type="float">
 +            <text:p>{{displayValue}}</text:p>
            </table:table-cell>
--          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="2" calcext:value-type="float">
--            <text:p>2.0</text:p>
--          </table:table-cell>
-+{{/valuesFormatted}}
-         </table:table-row>
--        <table:table-row table:style-name="ro2">
--          <table:table-cell office:value-type="string" calcext:value-type="string">
--            <text:p>y</text:p>
--          </table:table-cell>
--          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="3" calcext:value-type="float">
--            <text:p>3.0</text:p>
--          </table:table-cell>
--          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="4" calcext:value-type="float">
--            <text:p>4.0</text:p>
--          </table:table-cell>
--        </table:table-row>
--        <table:table-row table:style-name="ro2">
--          <table:table-cell office:value-type="string" calcext:value-type="string">
--            <text:p>z</text:p>
--          </table:table-cell>
--          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="5" calcext:value-type="float">
--            <text:p>5.0</text:p>
--          </table:table-cell>
 -          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="6" calcext:value-type="float">
 -            <text:p>6.0</text:p>
 -          </table:table-cell>
--        </table:table-row>
++{{/valuesFormatted}}
+         </table:table-row>
 -        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
 -          <table:table-cell table:number-columns-repeated="3"/>
 -        </table:table-row>
@@ -236,7 +278,7 @@
      </office:spreadsheet>
    </office:body>
 --- template-spreadsheets/mustache/styles.xml	2023-10-12 10:46:27
-+++ template-spreadsheets/mustache/styles.xml	2023-10-11 21:02:08
++++ template-spreadsheets/mustache/styles.xml	2023-10-12 10:53:37
 @@ -17,6 +17,9 @@
      <number:number-style style:name="N111">
        <number:number number:decimal-places="1" number:min-decimal-places="1" number:min-integer-digits="1"/>
@@ -257,7 +299,7 @@
      <style:style style:name="Status" style:family="table-cell" style:parent-style-name="Default"/>
      <style:style style:name="Good" style:family="table-cell" style:parent-style-name="Status">
 --- template-spreadsheets/mustache/meta.xml	2023-10-12 10:46:27
-+++ template-spreadsheets/mustache/meta.xml	2023-10-11 20:58:49
++++ template-spreadsheets/mustache/meta.xml	2023-10-12 10:53:37
 @@ -6,6 +6,6 @@
      <meta:editing-duration>PT12M36S</meta:editing-duration>
      <meta:editing-cycles>14</meta:editing-cycles>
@@ -267,7 +309,7 @@
    </office:meta>
  </office:document-meta>
 --- template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-12 10:46:27
-+++ template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-11 20:58:49
++++ template-spreadsheets/mustache/META-INF/manifest.xml	2023-10-12 10:53:37
 @@ -3,9 +3,5 @@
    <manifest:file-entry manifest:full-path="/" manifest:version="1.3" manifest:media-type="application/vnd.oasis.opendocument.spreadsheet"/>
    <manifest:file-entry manifest:full-path="meta.xml" manifest:media-type="text/xml"/>

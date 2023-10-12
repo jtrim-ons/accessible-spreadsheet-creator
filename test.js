@@ -25,11 +25,16 @@ const odsData = {
 		'Text 2b',
 		'[Office for National Statistics](https://www.ons.gov.uk)',
 	],
+	notes: [
+		{name: 'note_1', text: 'Here is a note'},
+		{name: 'another_note', text: 'Here is another note'},
+		{name: 'note C', text: 'Another note'},
+	],
 	sheets: [
 		{
 			sheetName: 'Age',
 			tableName: 'Age',
-			sheetIntroText: ['Some introductory text'],
+			sheetIntroText: ['Some introductory text [[another_note]][[note_1]]'],
 			numberStyles: ['cell_number_with_commas', 'cell_number_1dp'],
 			tableHeadings: [
 				'Category',
