@@ -17,13 +17,13 @@ import accessibleSpreadsheetCreator from './index.js';
 const odsData = {
 	coverSheetTitle: 'Some pretend data',
 	coverSheetContents: [
-		{type: 'subtitle', text: 'Subtitle 1'},
-		{type: 'text', text: 'Text 1a'},
-		{type: 'text', text: 'Text 1b'},
-		{type: 'subtitle', text: 'Subtitle 2'},
-		{type: 'text', text: 'Text 2a'},
-		{type: 'text', text: 'Text 2b'},
-		{type: 'hyperlink', href: 'https://www.ons.gov.uk', text: 'Office for National Statistics'},
+		'## Subtitle 1',
+		'Text 1a',
+		'Text 1b',
+		'## Subtitle 2',
+		'Text 2a',
+		'Text 2b',
+		'[Office for National Statistics](https://www.ons.gov.uk)',
 	],
 	sheets: [
 		{
