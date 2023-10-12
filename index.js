@@ -128,6 +128,7 @@ export default function createZip(odsData) {
 
 		for (const column of sheet.columns) {
 			column.valuesFormatted = formatValues(column.values, column.style);
+			column.heading = column.heading.split('\n');
 		}
 
 		sheet.rows = [];

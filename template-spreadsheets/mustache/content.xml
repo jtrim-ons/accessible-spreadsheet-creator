@@ -188,7 +188,9 @@
         <table:table-row table:style-name="ro2">
 {{#columns}}
           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
-            <text:p>{{heading}}</text:p>
+{{#heading}}
+            <text:p>{{.}}</text:p>
+{{/heading}}
           </table:table-cell>
 {{/columns}}
         </table:table-row>

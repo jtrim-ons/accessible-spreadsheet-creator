@@ -1,5 +1,5 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-12 10:46:27
-+++ template-spreadsheets/mustache/content.xml	2023-10-12 21:37:50
++++ template-spreadsheets/mustache/content.xml	2023-10-12 22:12:03
 @@ -11,12 +11,19 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -99,7 +99,7 @@
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
              <text:p>Contents</text:p>
-@@ -77,113 +99,123 @@
+@@ -77,113 +99,125 @@
            <table:table-cell/>
          </table:table-row>
          <table:table-row table:style-name="ro2">
@@ -234,7 +234,9 @@
 +        <table:table-row table:style-name="ro2">
 +{{#columns}}
 +          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
-+            <text:p>{{heading}}</text:p>
++{{#heading}}
++            <text:p>{{.}}</text:p>
++{{/heading}}
            </table:table-cell>
 -          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="4" calcext:value-type="float">
 -            <text:p>4.0</text:p>
