@@ -28,7 +28,7 @@
       <style:table-row-properties style:row-height="0.529cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
     <style:style style:name="ro3" style:family="table-row">
-      <style:table-row-properties style:row-height="0.612cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
+      <style:table-row-properties style:row-height="1.25cm" fo:break-before="auto"/>
     </style:style>
     <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
@@ -44,6 +44,9 @@
     <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default">
       <style:table-cell-properties fo:wrap-option="wrap"/>
       <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+    </style:style>
+    <style:style style:name="cell_extra_padding_bottom" style:family="table-cell" style:parent-style-name="Default">
+      <style:table-cell-properties fo:padding-bottom="0.7cm"/>
     </style:style>
     <style:style style:name="cell_hyperlink" style:family="table-cell" style:parent-style-name="Hyperlink"/>
     <style:style style:name="cell_number_1dp" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
@@ -92,7 +95,7 @@
           <table:table-cell/>
         </table:table-row>
         <table:table-row table:style-name="ro2">
-          <table:table-cell office:value-type="string" calcext:value-type="string">
+          <table:table-cell table:style-name="cell_extra_padding_bottom" office:value-type="string" calcext:value-type="string">
             <text:p>This worksheet contains one table.</text:p>
           </table:table-cell>
           <table:table-cell/>
@@ -127,20 +130,21 @@
           </table:table-cell>
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
+{{#introText}}
         <table:table-row table:style-name="ro2">
-          <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>This worksheet contains one table.</text:p>
+  {{#isLastIntroRow}}
+          <table:table-cell table:style-name="cell_extra_padding_bottom" office:value-type="string" calcext:value-type="string">
+            <text:p>{{text}}</text:p>
           </table:table-cell>
-          <table:table-cell table:number-columns-repeated="2"/>
-        </table:table-row>
-{{#sheetIntroText}}
-        <table:table-row table:style-name="ro2">
+  {{/isLastIntroRow}}
+  {{^isLastIntroRow}}
           <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>{{.}}</text:p>
+            <text:p>{{text}}</text:p>
           </table:table-cell>
+  {{/isLastIntroRow}}
           <table:table-cell table:number-columns-repeated="2"/>
-        </table:table-row>
-{{/sheetIntroText}}
+      </table:table-row>
+{{/introText}}
         <table:table-row table:style-name="ro2">
 {{#tableHeadings}}
           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">

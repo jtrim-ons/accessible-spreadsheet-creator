@@ -26,6 +26,7 @@ function formatValues(values, numberStyles) {
 }
 
 export default function createZip(odsData) {
+	odsData = JSON.parse(JSON.stringify(odsData));
 	odsData.tableCount = odsData.sheets.length + 1; // Add 1 for cover sheet TODO add another for contents?
 	odsData.firstTocCell = cellRef(1, 3);
 	odsData.lastTocCell = cellRef(2, 3 + odsData.sheets.length);
@@ -45,7 +46,10 @@ export default function createZip(odsData) {
 	let i = 0;
 	for (const sheet of odsData.sheets) {
 		sheet.sheetNumber = i + 1;
-		const introTextLength = sheet.sheetIntroText ? sheet.sheetIntroText.length : 0;
+		sheet.sheetIntroText ||= [];
+		const introTextLength = sheet.sheetIntroText.length;
+		sheet.sheetIntroText = ['This worksheet contains one table.', ...sheet.sheetIntroText];
+		sheet.introText = sheet.sheetIntroText.map((t, i) => ({text: t, isLastIntroRow: i === sheet.sheetIntroText.length - 1}));
 		sheet.firstTableCell = cellRef(1, 3 + introTextLength);
 		sheet.lastTableCell = cellRef(1 + sheet.rowData[0].values.length, 3 + sheet.rowData.length + introTextLength);
 
