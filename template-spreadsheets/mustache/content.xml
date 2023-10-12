@@ -186,24 +186,28 @@
       </table:table-row>
 {{/introText}}
         <table:table-row table:style-name="ro2">
-{{#tableHeadings}}
+{{#columns}}
           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
-            <text:p>{{.}}</text:p>
+            <text:p>{{heading}}</text:p>
           </table:table-cell>
-{{/tableHeadings}}
+{{/columns}}
         </table:table-row>
-{{#rowData}}
+{{#rows}}
         <table:table-row table:style-name="ro2">
+{{#cellsInRow}}
+{{#isText}}
           <table:table-cell office:value-type="string" calcext:value-type="string">
-            <text:p>{{name}}</text:p>
-          </table:table-cell>
-{{#valuesFormatted}}
-          <table:table-cell table:style-name="{{cellFormat}}" office:value-type="float" office:value="{{rawValue}}" calcext:value-type="float">
             <text:p>{{displayValue}}</text:p>
           </table:table-cell>
-{{/valuesFormatted}}
+{{/isText}}
+{{#isNumeric}}
+          <table:table-cell table:style-name="cell_{{style}}" office:value-type="float" office:value="{{rawValue}}" calcext:value-type="float">
+            <text:p>{{displayValue}}</text:p>
+          </table:table-cell>
+{{/isNumeric}}
+{{/cellsInRow}}
         </table:table-row>
-{{/rowData}}
+{{/rows}}
       </table:table>
 {{/sheets}}
       <table:named-expressions/>

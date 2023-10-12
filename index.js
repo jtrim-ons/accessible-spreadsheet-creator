@@ -9,20 +9,20 @@ function cellRef(col, row) {
 	return String.fromCodePoint('A'.codePointAt(0) - 1 + col) + row;
 }
 
-function formatValues(values, numberStyles) {
-	if (values.length != numberStyles.length) throw new Error("Unexpected numberStyles length");
-	return values.map((d, i) => {
-		const cellFormat = numberStyles[i];
-		if (!['cell_number_with_commas', 'cell_number_1dp'].includes(cellFormat)) {
-			throw new Error('Unrecognised number format: ' + cellFormat);
-		}
+function formatValues(values, style) {
+	if (style === 'text') {
+		return values.map(d => ({isText: true, displayValue: d}));
+	}
 
-		const displayValue = cellFormat === 'cell_number_with_commas'
-			? d.toLocaleString('en-GB')
-			: d.toFixed(1);
+	if (style === 'number_with_commas') {
+		return values.map(d => ({isNumeric: true, rawValue: d, displayValue: d.toLocaleString('en-GB'), style}));
+	}
 
-		return {rawValue: d, displayValue, cellFormat};
-	});
+	if (style === 'number_1dp') {
+		return values.map(d => ({isNumeric: true, rawValue: d, displayValue: d.toFixed(1), style}));
+	}
+
+	throw new Error('Unrecognised column style: ' + style);
 }
 
 function replaceNotes(t, tSetterCallback, matchReplacer) {
@@ -113,22 +113,21 @@ export default function createZip(odsData) {
 		const introTextLength = sheet.sheetIntroText.length;
 		sheet.introText = sheet.sheetIntroText.map((t, i) => ({text: t, isLastIntroRow: i === sheet.sheetIntroText.length - 1}));
 		sheet.firstTableCell = cellRef(1, 2 + introTextLength);
-		sheet.lastTableCell = cellRef(1 + sheet.rowData[0].values.length, 2 + sheet.rowData.length + introTextLength);
+		sheet.lastTableCell = cellRef(sheet.columns.length, 2 + sheet.columns[0].values.length + introTextLength);
 
-		for (const row of sheet.rowData) {
-			row.valuesFormatted = formatValues(row.values, sheet.numberStyles);
+		for (const column of sheet.columns) {
+			column.valuesFormatted = formatValues(column.values, column.style);
 		}
 
-		sheet.columnStyles = [
-			{name: 'firstColStyle' + i, widthCm: columnWidth(sheet.rowData.map(d => d.name))}
-		];
-
-		for (let j = 0; j < sheet.numberStyles.length; j++) {
-			const widthCm = Math.max(2.4, columnWidth(sheet.rowData.map(d => d.valuesFormatted[j].displayValue)));
-			sheet.columnStyles.push(
-				{name: 'colStyle' + i + '_' + j, widthCm}
-			);
+		sheet.rows = [];
+		for (let j=0; j<sheet.columns[0].values.length; j++) {
+			sheet.rows.push({cellsInRow: sheet.columns.map(c => c.valuesFormatted[j])});
 		}
+
+		sheet.columnStyles = sheet.columns.map((column, j) => {
+			const widthCm = Math.max(2.4, columnWidth(column.valuesFormatted.map(d => d.displayValue)));
+			return {name: 'colStyle' + i + '_' + j, widthCm};
+		});
 
 		i++;
 	}

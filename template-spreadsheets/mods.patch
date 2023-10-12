@@ -1,5 +1,5 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-12 10:46:27
-+++ template-spreadsheets/mustache/content.xml	2023-10-12 21:04:59
++++ template-spreadsheets/mustache/content.xml	2023-10-12 21:37:50
 @@ -11,12 +11,19 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -99,7 +99,7 @@
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
              <text:p>Contents</text:p>
-@@ -77,113 +99,119 @@
+@@ -77,113 +99,123 @@
            <table:table-cell/>
          </table:table-row>
          <table:table-row table:style-name="ro2">
@@ -232,31 +232,35 @@
 +      </table:table-row>
 +{{/introText}}
 +        <table:table-row table:style-name="ro2">
-+{{#tableHeadings}}
++{{#columns}}
 +          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
-+            <text:p>{{.}}</text:p>
++            <text:p>{{heading}}</text:p>
            </table:table-cell>
 -          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="4" calcext:value-type="float">
 -            <text:p>4.0</text:p>
 -          </table:table-cell>
-+{{/tableHeadings}}
++{{/columns}}
          </table:table-row>
-+{{#rowData}}
++{{#rows}}
          <table:table-row table:style-name="ro2">
++{{#cellsInRow}}
++{{#isText}}
            <table:table-cell office:value-type="string" calcext:value-type="string">
 -            <text:p>z</text:p>
-+            <text:p>{{name}}</text:p>
++            <text:p>{{displayValue}}</text:p>
            </table:table-cell>
 -          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="5" calcext:value-type="float">
 -            <text:p>5.0</text:p>
-+{{#valuesFormatted}}
-+          <table:table-cell table:style-name="{{cellFormat}}" office:value-type="float" office:value="{{rawValue}}" calcext:value-type="float">
++{{/isText}}
++{{#isNumeric}}
++          <table:table-cell table:style-name="cell_{{style}}" office:value-type="float" office:value="{{rawValue}}" calcext:value-type="float">
 +            <text:p>{{displayValue}}</text:p>
            </table:table-cell>
 -          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="6" calcext:value-type="float">
 -            <text:p>6.0</text:p>
 -          </table:table-cell>
-+{{/valuesFormatted}}
++{{/isNumeric}}
++{{/cellsInRow}}
          </table:table-row>
 -        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048569">
 -          <table:table-cell table:number-columns-repeated="3"/>
@@ -264,7 +268,7 @@
 -        <table:table-row table:style-name="ro2">
 -          <table:table-cell table:number-columns-repeated="3"/>
 -        </table:table-row>
-+{{/rowData}}
++{{/rows}}
        </table:table>
 +{{/sheets}}
        <table:named-expressions/>

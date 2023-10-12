@@ -35,31 +35,59 @@ const odsData = {
 			sheetName: 'Age',
 			tableName: 'Age',
 			sheetIntroText: ['Some introductory text [[another_note]][[note_1]]'],
-			numberStyles: ['cell_number_with_commas', 'cell_number_1dp'],
-			tableHeadings: [
-				'Category',
-				'Selected group',
-				'England and Wales with a really long title',
-			],
-			rowData: [
-				{name: 'First category', values: [12_345, 45.6]},
-				{name: 'Second category', values: [1_234_567, 45.6]},
-			],
+			columns: [
+				{
+					style: 'text',
+					heading: 'Category',
+					values: [
+						'First category',
+						'Second category',
+					]
+				},
+				{
+					style: 'number_with_commas',
+					heading: 'Selected group',
+					values: [
+						12_345, 1_234_567
+					]
+				},
+				{
+					style: 'number_1dp',
+					heading: 'England and Wales with a really long title',
+					values: [
+						45.6, 45.6
+					]
+				},
+			]
 		},
 		{
 			sheetName: 'Ethnicity',
 			tableName: 'Ethnicity',
-			numberStyles: ['cell_number_1dp', 'cell_number_1dp'],
-			tableHeadings: [
-				'Category',
-				'Selected group',
-				'England and Wales with a really long title',
-			],
-			rowData: [
-				{name: 'First category', values: [12.3, 45.6]},
-				{name: 'Second category', values: [12.3, 45.6]},
-				{name: 'Really long looooooong category', values: [78.9, 45.6]},
-			],
+			columns: [
+				{
+					style: 'text',
+					heading: 'Category',
+					values: [
+						'First category',
+						'Second category',
+						'Really long looooooong category'
+					]
+				},
+				{
+					style: 'number_1dp',
+					heading: 'Selected group',
+					values: [
+						12.3, 12.3, 78.9
+					]
+				},
+				{
+					style: 'number_1dp',
+					heading: 'England and Wales with a really long title',
+					values: [
+						45.6, 45.6, 45.6
+					]
+				},
+			]
 		},
 	],
 };
