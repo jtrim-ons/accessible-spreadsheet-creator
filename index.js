@@ -44,6 +44,24 @@ function visitNotes(sheet, matchReplacer) {
 			}, matchReplacer,
 		);
 	}
+
+	for (const column of sheet.columns) {
+		replaceNotes(
+			column.heading, t => {
+				column.heading = t;
+			}, matchReplacer,
+		);
+
+		if (column.style === 'text') {
+			for (let i=0; i<column.values.length; i++) {
+				replaceNotes(
+					column.values[i], t => {
+						column.values[i] = t;
+					}, matchReplacer,
+				);
+			}
+		}
+	}
 }
 
 function processNotes(odsData) {

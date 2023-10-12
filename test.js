@@ -38,9 +38,9 @@ const odsData = {
 			columns: [
 				{
 					style: 'text',
-					heading: 'Category',
+					heading: 'Category [[note_1]]',
 					values: [
-						'First category',
+						'First category [[note_1]]',
 						'Second category',
 					]
 				},
