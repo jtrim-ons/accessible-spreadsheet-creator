@@ -119,11 +119,12 @@ function oneTableMessage(hasNotes) {
 
 export default function createZip(odsData) {
 	odsData = JSON.parse(JSON.stringify(odsData));
-	odsData.tableCount = odsData.sheets.length + 1; // Add 1 for cover sheet TODO add another for contents?
 	odsData.firstTocCell = cellRef(1, 3);
 	odsData.lastTocCell = cellRef(2, 3 + odsData.sheets.length);
 
 	processNotes(odsData);
+
+	odsData.tableCount = odsData.sheets.length + 2 + odsData.hasNotes;
 
 	odsData.coverSheetContents = makeCoverSheetContents(odsData.coverSheetContents);
 
