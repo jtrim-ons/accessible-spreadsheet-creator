@@ -1,6 +1,6 @@
 {
 	"name": "accessible-spreadsheet-creator",
-	"version": "0.0.14",
+	"version": "0.0.15",
 	"description": "A simple module for creating accessible .ods files",
 	"license": "MIT",
 	"repository": "jtrim-ons/accessible-spreadsheet-creator",
@@ -26,6 +26,7 @@
 	],
 	"keywords": [],
 	"dependencies": {
+		"ajv": "^8.12.0",
 		"jszip": "3.10.1",
 		"mustache": "^4.2.0"
 	},
