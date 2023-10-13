@@ -25,7 +25,6 @@ function formatValues(values, style) {
 function replaceNotes(t, tSetterCallback, matchReplacer) {
 	const noteRegExp = /\[\[[^\]]+\]\]/g;
 	tSetterCallback(t.replace(noteRegExp, matchReplacer));
-	return true;
 }
 
 function visitNotes(sheet, matchReplacer) {
