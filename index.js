@@ -47,19 +47,17 @@ function visitNotes(sheet, visitString) {
 	}
 }
 
-function processNotes(odsData) {
-	if (!odsData.notes) {
-		odsData.hasNotes = false;
-		return;
+function processNotes(sourceNotes, sheets) {
+	if (!sourceNotes) {
+		return [];
 	}
 
 	const noteRegExp = /\[\[[^\]]+\]\]/g;
 
-	odsData.notes.forEach(n => n.used = false);
+	let notes = sourceNotes.map(({name, text}) => ({name, text, used: false}));
+	const notesMap = new Map(notes.map(note => [`[[${note.name}]]`, note]));
 
-	const notesMap = new Map(odsData.notes.map(note => [`[[${note.name}]]`, note]));
-
-	for (const sheet of odsData.sheets) {
+	for (const sheet of sheets) {
 		sheet.sheetIntroText ||= [];
 		sheet.hasNotes = false;
 		visitNotes(sheet, t => {
@@ -72,10 +70,10 @@ function processNotes(odsData) {
 		});
 	}
 
-	odsData.notes = odsData.notes.filter(n => n.used);
-	odsData.notes.forEach((n, i) => n.name = `[note ${i + 1}]`);
+	notes = notes.filter(n => n.used);
+	notes.forEach((n, i) => n.name = `[note ${i + 1}]`);
 
-	for (const sheet of odsData.sheets) {
+	for (const sheet of sheets) {
 		if (sheet.hasNotes) {
 			const matchReplacer = match => notesMap.get(match).name;
 			visitNotes(sheet, (t, tSetterCallback) => {
@@ -84,7 +82,7 @@ function processNotes(odsData) {
 		}
 	}
 
-	odsData.hasNotes = odsData.notes.length > 0;
+	return notes;
 }
 
 function columnWidth(strings) {
@@ -118,22 +116,24 @@ function oneTableMessage(hasNotes) {
 }
 
 export default function createZip(odsData) {
-	odsData = JSON.parse(JSON.stringify(odsData));
-	odsData.firstTocCell = cellRef(1, 3);
-	odsData.lastTocCell = cellRef(2, 3 + odsData.sheets.length);
+	const mustacheData = {
+		coverSheetTitle: odsData.coverSheetTitle,
+		firstTocCell: cellRef(1, 3),
+		lastTocCell: cellRef(2, 3 + odsData.sheets.length),
+		coverSheetContents: makeCoverSheetContents(odsData.coverSheetContents),
+		sheets: JSON.parse(JSON.stringify(odsData.sheets)),
+	};
 
-	processNotes(odsData);
+	mustacheData.notes = processNotes(odsData.notes, mustacheData.sheets);
+	mustacheData.hasNotes = mustacheData.notes.length > 0;
 
-	odsData.tableCount = odsData.sheets.length + 2 + odsData.hasNotes;
+	mustacheData.tableCount = mustacheData.sheets.length + 2 + mustacheData.hasNotes;
 
-	odsData.coverSheetContents = makeCoverSheetContents(odsData.coverSheetContents);
-
-	let i = 0;
-	for (const sheet of odsData.sheets) {
+	for (let i=0; i<mustacheData.sheets.length; i++) {
+		const sheet = mustacheData.sheets[i];
 		sheet.sheetNumber = i + 1;
-		sheet.sheetIntroText ||= [];
-		sheet.sheetIntroText = [oneTableMessage(sheet.hasNotes), ...sheet.sheetIntroText];
-		sheet.introText = sheet.sheetIntroText.map((t, i) => ({text: t, isLastIntroRow: i === sheet.sheetIntroText.length - 1}));
+		sheet.sheetIntroText = [oneTableMessage(sheet.hasNotes), ...(sheet.sheetIntroText || [])];
+		sheet.introText = sheet.sheetIntroText.map((t, j) => ({text: t, isLastIntroRow: j === sheet.sheetIntroText.length - 1}));
 		sheet.firstTableCell = cellRef(1, 2 + sheet.sheetIntroText.length);
 		sheet.lastTableCell = cellRef(sheet.columns.length, 2 + sheet.columns[0].values.length + sheet.sheetIntroText.length);
 
@@ -151,9 +151,7 @@ export default function createZip(odsData) {
 			const widthCm = Math.max(2.4, columnWidth(column.valuesFormatted.map(d => d.displayValue)));
 			return {name: 'colStyle' + i + '_' + j, widthCm};
 		});
-
-		i++;
 	}
 
-	return odsTemplate.map(item => ({filename: item.filename, contents: Mustache.render(item.contents, odsData)}));
+	return odsTemplate.map(item => ({filename: item.filename, contents: Mustache.render(item.contents, mustacheData)}));
 }
