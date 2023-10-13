@@ -1,6 +1,10 @@
 import odsTemplate from './template-spreadsheets/template.js';
 import approxTextWidth from './approx-text-width.js';
+import schema from './schema.js';
+import Ajv from 'ajv';
 import Mustache from 'mustache';
+
+let schemaValidator = null;
 
 function cellRef(col, row) {
 	return String.fromCodePoint('A'.codePointAt(0) - 1 + col) + row;
@@ -114,6 +118,16 @@ function oneTableMessage(hasNotes) {
 }
 
 export default function createZip(odsData) {
+	if (!schemaValidator) {
+		schemaValidator = new Ajv().compile(schema);
+	}
+
+	const valid = schemaValidator(odsData);
+	if (!valid) {
+		console.log(schemaValidator.errors);
+		throw new Error('Input did not match the schema');
+	}
+
 	const mustacheData = {
 		coverSheetTitle: odsData.coverSheetTitle,
 		firstTocCell: cellRef(1, 3),
