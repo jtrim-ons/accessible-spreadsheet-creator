@@ -107,12 +107,10 @@ function makeCoverSheetContents(coverSheetMarkdown) {
 }
 
 function oneTableMessage(hasNotes) {
-	let result = 'This worksheet contains one table.';
-	if (hasNotes) {
-		result += ' Some cells refer to notes, which can be found on the notes worksheet.';
-	}
-
-	return result;
+	let message = 'This worksheet contains one table.';
+	return hasNotes
+		? message + ' Some cells refer to notes, which can be found on the notes worksheet.'
+		: message;
 }
 
 export default function createZip(odsData) {
