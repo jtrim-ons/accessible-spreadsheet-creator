@@ -19,6 +19,10 @@ TODO
 - Run `scripts/create-patch.sh`
 - Run `git diff` to check if the changes look sensible
 
+## The Schema
+
+`ods-data.schema.json` is a JSON Schema for the input to the accessible spreadsheet creator function.  To create the docs, run `npm run make-schema-docs`. To turn the schema JSON into an importable JS file, run `./scripts/create-schema-js.sh`.
+
 ## TODO
 
-Put thumbnail.png back in.
+Put thumbnail.png back in?
