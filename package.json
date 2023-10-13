@@ -14,7 +14,9 @@
 		"node": ">=16"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava",
+		"test-schema": "npx ajv -s ods-data.schema.json -d example-input.json",
+		"make-schema-docs": "npx jsonschema2md -d . -o docs -x -"
 	},
 	"files": [
 		"index.js",
@@ -27,6 +29,8 @@
 		"mustache": "^4.2.0"
 	},
 	"devDependencies": {
+		"@adobe/jsonschema2md": "^7.1.5",
+		"ajv-cli": "^5.0.0",
 		"ava": "^5.3.0",
 		"xo": "^0.54.2"
 	}
