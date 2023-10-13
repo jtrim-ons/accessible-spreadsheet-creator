@@ -100,6 +100,21 @@ function columnWidth(strings) {
 	return ((maxPixelWidth / 37.8) + 0.5).toFixed(2);
 }
 
+function makeCoverSheetContents(coverSheetMarkdown) {
+	return coverSheetMarkdown.map(item => {
+		if (item.startsWith('## ')) {
+			return {isSubtitle: true, text: item.slice(3)}
+		}
+
+		if (/^\[.*\]\(.*\)$/.test(item)) {
+			const tokens = item.slice(1, -1).split('](');
+			return {isHyperlink: true, text: tokens[0], href: tokens[1]};
+		}
+
+		return {isText: true, text: item};
+	});
+}
+
 export default function createZip(odsData) {
 	odsData = JSON.parse(JSON.stringify(odsData));
 	odsData.tableCount = odsData.sheets.length + 1; // Add 1 for cover sheet TODO add another for contents?
@@ -108,13 +123,7 @@ export default function createZip(odsData) {
 
 	processNotes(odsData);
 
-	odsData.coverSheetContents = odsData.coverSheetContents.map(item =>
-		item.startsWith('## ')
-			? {isSubtitle: true, text: item.slice(3)}
-			: /^\[.*\]\(.*\)$/.test(item)
-				? {isHyperlink: true, text: item.replace(/^\[(.*)\].*$/, '$1'), href: item.replace(/^.*\((.*)\)$/, '$1')}
-				: {isText: true, text: item}
-	);
+	odsData.coverSheetContents = makeCoverSheetContents(odsData.coverSheetContents);
 
 	let i = 0;
 	for (const sheet of odsData.sheets) {
