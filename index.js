@@ -2,10 +2,6 @@ import odsTemplate from './template-spreadsheets/template.js';
 import approxTextWidth from './approx-text-width.js';
 import Mustache from 'mustache';
 
-// Put `mimetype` file first in the zip file so that file type detectors will
-// recognise the ODS file.
-odsTemplate.sort((a, b) => (b.filename==='mimetype') - (a.filename==='mimetype'));
-
 function cellRef(col, row) {
 	return String.fromCodePoint('A'.codePointAt(0) - 1 + col) + row;
 }

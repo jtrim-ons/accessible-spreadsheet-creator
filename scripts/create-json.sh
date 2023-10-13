@@ -2,21 +2,19 @@
 
 set -euo pipefail
 
-cd template-spreadsheets/mustache
-
 (
 echo 'export default [';
 sep=''
 
-find . -type f | grep -v '.swp$' | grep -v 'DS_Store' | grep -v '.png$' | while read f; do
+
+# mimetype needs to come first in the zip for magic filetype detection of .ods file
+for f in mimetype META-INF/manifest.xml content.xml meta.xml styles.xml; do
     echo $sep
     sep=,
-    echo '{"filename":' '"'$(echo $f | sed 's_^./__')'", "contents":'
-    jq -Rs '.' $f
+    echo '{"filename":' '"'$f'", "contents":'
+    jq -Rs '.' template-spreadsheets/mustache/$f
     echo '}'
 done
 
 echo ']';
-) > ../template.js
-
-cd ../..
+) > template-spreadsheets/template.js
