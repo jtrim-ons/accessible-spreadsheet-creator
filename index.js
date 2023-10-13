@@ -22,39 +22,26 @@ function formatValues(values, style) {
 	throw new Error('Unrecognised column style: ' + style);
 }
 
-function replaceNotes(t, tSetterCallback, matchReplacer) {
-	const noteRegExp = /\[\[[^\]]+\]\]/g;
-	tSetterCallback(t.replace(noteRegExp, matchReplacer));
-}
-
-function visitNotes(sheet, matchReplacer) {
-	replaceNotes(
-		sheet.sheetName, t => {
-			sheet.sheetName = t;
-		}, matchReplacer,
-	);
+function visitNotes(sheet, visitString) {
+	visitString(sheet.sheetName, t => {
+		sheet.sheetName = t;
+	});
 	for (let i=0; i<sheet.sheetIntroText.length; i++) {
-		replaceNotes(
-			sheet.sheetIntroText[i], t => {
-				sheet.sheetIntroText[i] = t;
-			}, matchReplacer,
-		);
+		visitString(sheet.sheetIntroText[i], t => {
+			sheet.sheetIntroText[i] = t;
+		});
 	}
 
 	for (const column of sheet.columns) {
-		replaceNotes(
-			column.heading, t => {
-				column.heading = t;
-			}, matchReplacer,
-		);
+		visitString(column.heading, t => {
+			column.heading = t;
+		});
 
 		if (column.style === 'text') {
 			for (let i=0; i<column.values.length; i++) {
-				replaceNotes(
-					column.values[i], t => {
-						column.values[i] = t;
-					}, matchReplacer,
-				);
+				visitString(column.values[i], t => {
+					column.values[i] = t;
+				});
 			}
 		}
 	}
@@ -66,19 +53,22 @@ function processNotes(odsData) {
 		return;
 	}
 
+	const noteRegExp = /\[\[[^\]]+\]\]/g;
+
 	odsData.notes.forEach(n => n.used = false);
 
-	const notesMap = new Map(odsData.notes.map(note => [note.name, note]));
+	const notesMap = new Map(odsData.notes.map(note => [`[[${note.name}]]`, note]));
 
 	for (const sheet of odsData.sheets) {
 		sheet.sheetIntroText ||= [];
 		sheet.hasNotes = false;
-		visitNotes(sheet, match => {
+		visitNotes(sheet, t => {
 			// Don't replace [[note_id]] yet; just determine which notes should be on the notes
 			// sheet and which sheets have notes.
-			notesMap.get(match.slice(2, -2)).used = true;
-			sheet.hasNotes = true;
-			return match;
+			for (const noteRef of t.match(noteRegExp) || []) {
+				notesMap.get(noteRef).used = true;
+				sheet.hasNotes = true;
+			}
 		});
 	}
 
@@ -87,7 +77,10 @@ function processNotes(odsData) {
 
 	for (const sheet of odsData.sheets) {
 		if (sheet.hasNotes) {
-			visitNotes(sheet, match => notesMap.get(match.slice(2, -2)).name);
+			const matchReplacer = match => notesMap.get(match).name;
+			visitNotes(sheet, (t, tSetterCallback) => {
+				tSetterCallback(t.replace(noteRegExp, matchReplacer));
+			});
 		}
 	}
 
