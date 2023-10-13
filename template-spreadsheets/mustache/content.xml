@@ -48,6 +48,11 @@
       <style:table-cell-properties fo:wrap-option="wrap"/>
       <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
     </style:style>
+    <style:style style:name="right_aligned_table_heading" style:family="table-cell" style:parent-style-name="Default">
+      <style:table-cell-properties fo:wrap-option="wrap" style:text-align-source="fix" style:repeat-content="false"/>
+      <style:paragraph-properties fo:text-align="end" fo:margin-left="0cm"/>
+      <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+    </style:style>
     <style:style style:name="cell_extra_padding_bottom" style:family="table-cell" style:parent-style-name="Default">
       <style:table-cell-properties fo:padding-bottom="0.7cm"/>
     </style:style>
@@ -187,11 +192,16 @@
 {{/introText}}
         <table:table-row table:style-name="ro2">
 {{#columns}}
-          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
-{{#heading}}
-            <text:p>{{.}}</text:p>
-{{/heading}}
+  {{#isNumeric}}
+          <table:table-cell table:style-name="right_aligned_table_heading" office:value-type="string" calcext:value-type="string">
+            <text:p>{{heading}}</text:p>
           </table:table-cell>
+  {{/isNumeric}}
+  {{^isNumeric}}
+          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
+            <text:p>{{heading}}</text:p>
+          </table:table-cell>
+  {{/isNumeric}}
 {{/columns}}
         </table:table-row>
 {{#rows}}
