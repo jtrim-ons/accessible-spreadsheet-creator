@@ -108,6 +108,15 @@ function makeCoverSheetContents(coverSheetMarkdown) {
 	});
 }
 
+function oneTableMessage(hasNotes) {
+	let result = 'This worksheet contains one table.';
+	if (hasNotes) {
+		result += ' Some cells refer to notes, which can be found on the notes worksheet.';
+	}
+
+	return result;
+}
+
 export default function createZip(odsData) {
 	odsData = JSON.parse(JSON.stringify(odsData));
 	odsData.tableCount = odsData.sheets.length + 1; // Add 1 for cover sheet TODO add another for contents?
@@ -122,12 +131,7 @@ export default function createZip(odsData) {
 	for (const sheet of odsData.sheets) {
 		sheet.sheetNumber = i + 1;
 		sheet.sheetIntroText ||= [];
-		let oneTableMessage = 'This worksheet contains one table.';
-		if (sheet.hasNotes) {
-			oneTableMessage += ' Some cells refer to notes, which can be found on the notes worksheet.';
-		}
-
-		sheet.sheetIntroText = [oneTableMessage, ...sheet.sheetIntroText];
+		sheet.sheetIntroText = [oneTableMessage(sheet.hasNotes), ...sheet.sheetIntroText];
 		sheet.introText = sheet.sheetIntroText.map((t, i) => ({text: t, isLastIntroRow: i === sheet.sheetIntroText.length - 1}));
 		sheet.firstTableCell = cellRef(1, 2 + sheet.sheetIntroText.length);
 		sheet.lastTableCell = cellRef(sheet.columns.length, 2 + sheet.columns[0].values.length + sheet.sheetIntroText.length);
