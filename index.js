@@ -74,7 +74,8 @@ function processNotes(odsData) {
 		sheet.sheetIntroText ||= [];
 		sheet.hasNotes = false;
 		visitNotes(sheet, match => {
-			// Don't replace [[note_id]] yet...
+			// Don't replace [[note_id]] yet; just determine which notes should be on the notes
+			// sheet and which sheets have notes.
 			notesMap.get(match.slice(2, -2)).used = true;
 			sheet.hasNotes = true;
 			return match;
@@ -91,6 +92,12 @@ function processNotes(odsData) {
 	}
 
 	odsData.hasNotes = odsData.notes.length > 0;
+}
+
+function columnWidth(strings) {
+	const maxPixelWidth = Math.max(...strings.map(d => approxTextWidth(d)));
+	// 37.8 pixels per cm, and add a bit in case the width is inaccurate:
+	return ((maxPixelWidth / 37.8) + 0.5).toFixed(2);
 }
 
 export default function createZip(odsData) {
@@ -113,14 +120,15 @@ export default function createZip(odsData) {
 	for (const sheet of odsData.sheets) {
 		sheet.sheetNumber = i + 1;
 		sheet.sheetIntroText ||= [];
-		const oneTableMessage = sheet.hasNotes
-			? 'This worksheet contains one table. Some cells refer to notes, which can be found on the notes worksheet.'
-			: 'This worksheet contains one table.';
+		let oneTableMessage = 'This worksheet contains one table.';
+		if (sheet.hasNotes) {
+			oneTableMessage += ' Some cells refer to notes, which can be found on the notes worksheet.';
+		}
+
 		sheet.sheetIntroText = [oneTableMessage, ...sheet.sheetIntroText];
-		const introTextLength = sheet.sheetIntroText.length;
 		sheet.introText = sheet.sheetIntroText.map((t, i) => ({text: t, isLastIntroRow: i === sheet.sheetIntroText.length - 1}));
-		sheet.firstTableCell = cellRef(1, 2 + introTextLength);
-		sheet.lastTableCell = cellRef(sheet.columns.length, 2 + sheet.columns[0].values.length + introTextLength);
+		sheet.firstTableCell = cellRef(1, 2 + sheet.sheetIntroText.length);
+		sheet.lastTableCell = cellRef(sheet.columns.length, 2 + sheet.columns[0].values.length + sheet.sheetIntroText.length);
 
 		for (const column of sheet.columns) {
 			column.valuesFormatted = formatValues(column.values, column.style);
@@ -140,17 +148,5 @@ export default function createZip(odsData) {
 		i++;
 	}
 
-	const result = [];
-
-	for (const item of odsTemplate) {
-		result.push({filename: item.filename, contents: Mustache.render(item.contents, odsData)});
-	}
-
-	return result;
-}
-
-function columnWidth(strings) {
-	const maxPixelWidth = Math.max(...strings.map(d => approxTextWidth(d)));
-	// 37.8 pixels per cm, and add a bit in case the width is inaccurate:
-	return ((maxPixelWidth / 37.8) + 0.5).toFixed(2);
+	return odsTemplate.map(item => ({filename: item.filename, contents: Mustache.render(item.contents, odsData)}));
 }
