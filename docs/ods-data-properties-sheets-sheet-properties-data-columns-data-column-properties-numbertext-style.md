@@ -1,15 +1,15 @@
-# Notes Schema
+# Number/text style Schema
 
 ```txt
-https://github.com/jtrim-ons/accessible-spreadsheet-creator#/properties/notes
+https://github.com/jtrim-ons/accessible-spreadsheet-creator#/properties/sheets/items/properties/columns/items/properties/style
 ```
 
-The notes, each with a name that can be referred to in double square brackets and text.
+'text'=text column; 'number\_with\_commas': integers with thousand separator; 'number\_1dp': numbers to 1 decimal place
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                               |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [ods-data.schema.json\*](../ods-data.schema.json "open original schema") |
 
-## notes Type
+## style Type
 
-`object[]` ([Note](ods-data-properties-notes-note.md))
+`string` ([Number/text style](ods-data-properties-sheets-sheet-properties-data-columns-data-column-properties-numbertext-style.md))

@@ -22,9 +22,10 @@ export default
 		"notes": {
 			"type": "array",
 			"title": "Notes",
-			"description": "The notes each with a name that can be reffered to in double square brackets and text.",
+			"description": "The notes, each with a name that can be referred to in double square brackets and text.",
 			"items": {
 				"type": "object",
+				"title": "Note",
 				"properties": {
 					"name": {
 						"type": "string",
@@ -45,6 +46,7 @@ export default
 			"description": "The data an metadata for the worksheets other than cover, contents and notes sheets.",
 			"items": {
 				"type": "object",
+				"title": "Sheet",
 				"properties": {
 					"sheetName": {
 						"type": "string",

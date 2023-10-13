@@ -1,15 +1,15 @@
-# Notes Schema
+# Untitled number in Accessible Spreadsheet Creator Schema
 
 ```txt
-https://github.com/jtrim-ons/accessible-spreadsheet-creator#/properties/notes
+https://github.com/jtrim-ons/accessible-spreadsheet-creator#/properties/sheets/items/properties/columns/items/properties/values/anyOf/0/items
 ```
 
-The notes, each with a name that can be referred to in double square brackets and text.
+
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                               |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [ods-data.schema.json\*](../ods-data.schema.json "open original schema") |
 
-## notes Type
+## items Type
 
-`object[]` ([Note](ods-data-properties-notes-note.md))
+`number`

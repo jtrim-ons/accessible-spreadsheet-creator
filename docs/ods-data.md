@@ -65,13 +65,13 @@ The lines below the cover sheet title. Each can be a subtitle starting with '## 
 
 ## notes
 
-The notes each with a name that can be reffered to in double square brackets and text.
+The notes, each with a name that can be referred to in double square brackets and text.
 
 `notes`
 
 *   is optional
 
-*   Type: `object[]` ([Details](ods-data-properties-notes-items.md))
+*   Type: `object[]` ([Note](ods-data-properties-notes-note.md))
 
 *   cannot be null
 
@@ -79,7 +79,7 @@ The notes each with a name that can be reffered to in double square brackets and
 
 ### notes Type
 
-`object[]` ([Details](ods-data-properties-notes-items.md))
+`object[]` ([Note](ods-data-properties-notes-note.md))
 
 ## sheets
 
@@ -89,7 +89,7 @@ The data an metadata for the worksheets other than cover, contents and notes she
 
 *   is required
 
-*   Type: `object[]` ([Details](ods-data-properties-sheets-items.md))
+*   Type: `object[]` ([Sheet](ods-data-properties-sheets-sheet.md))
 
 *   cannot be null
 
@@ -97,4 +97,4 @@ The data an metadata for the worksheets other than cover, contents and notes she
 
 ### sheets Type
 
-`object[]` ([Details](ods-data-properties-sheets-items.md))
+`object[]` ([Sheet](ods-data-properties-sheets-sheet.md))

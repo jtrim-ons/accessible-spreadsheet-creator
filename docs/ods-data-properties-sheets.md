@@ -12,4 +12,4 @@ The data an metadata for the worksheets other than cover, contents and notes she
 
 ## sheets Type
 
-`object[]` ([Details](ods-data-properties-sheets-items.md))
+`object[]` ([Sheet](ods-data-properties-sheets-sheet.md))

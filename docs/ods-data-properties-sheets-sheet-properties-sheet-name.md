@@ -1,15 +1,19 @@
-# Notes Schema
+# Sheet name Schema
 
 ```txt
-https://github.com/jtrim-ons/accessible-spreadsheet-creator#/properties/notes
+https://github.com/jtrim-ons/accessible-spreadsheet-creator#/properties/sheets/items/properties/sheetName
 ```
 
-The notes, each with a name that can be referred to in double square brackets and text.
+The name to appear in cell A1
 
 | Abstract            | Extensible | Status         | Identifiable            | Custom Properties | Additional Properties | Access Restrictions | Defined In                                                               |
 | :------------------ | :--------- | :------------- | :---------------------- | :---------------- | :-------------------- | :------------------ | :----------------------------------------------------------------------- |
 | Can be instantiated | No         | Unknown status | Unknown identifiability | Forbidden         | Allowed               | none                | [ods-data.schema.json\*](../ods-data.schema.json "open original schema") |
 
-## notes Type
+## sheetName Type
 
-`object[]` ([Note](ods-data-properties-notes-note.md))
+`string` ([Sheet name](ods-data-properties-sheets-sheet-properties-sheet-name.md))
+
+## sheetName Constraints
+
+**minimum length**: the minimum number of characters for this string is: `1`
