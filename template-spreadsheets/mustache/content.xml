@@ -194,12 +194,16 @@
 {{#columns}}
   {{#isNumeric}}
           <table:table-cell table:style-name="right_aligned_table_heading" office:value-type="string" calcext:value-type="string">
-            <text:p>{{heading}}</text:p>
+    {{#headingLines}}
+            <text:p>{{.}}</text:p>
+    {{/headingLines}}
           </table:table-cell>
   {{/isNumeric}}
   {{^isNumeric}}
           <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
-            <text:p>{{heading}}</text:p>
+    {{#headingLines}}
+            <text:p>{{.}}</text:p>
+    {{/headingLines}}
           </table:table-cell>
   {{/isNumeric}}
 {{/columns}}

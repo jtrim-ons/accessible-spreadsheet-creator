@@ -152,7 +152,7 @@ export default function createZip(odsData) {
 		for (const column of sheet.columns) {
 			column.valuesFormatted = formatValues(column.values, column.style);
 			column.isNumeric = column.style !== 'text';
-			column.heading = column.heading.split('\n');
+			column.headingLines = column.heading.split('\n');
 		}
 
 		sheet.rows = [];

@@ -1,5 +1,5 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-13 18:24:13
-+++ template-spreadsheets/mustache/content.xml	2023-10-13 18:21:01
++++ template-spreadsheets/mustache/content.xml	2023-10-14 08:15:22
 @@ -11,12 +11,19 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -104,7 +104,7 @@
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
              <text:p>Contents</text:p>
-@@ -77,113 +104,130 @@
+@@ -77,113 +104,134 @@
            <table:table-cell/>
          </table:table-row>
          <table:table-row table:style-name="ro2">
@@ -240,14 +240,18 @@
 +{{#columns}}
 +  {{#isNumeric}}
 +          <table:table-cell table:style-name="right_aligned_table_heading" office:value-type="string" calcext:value-type="string">
-+            <text:p>{{heading}}</text:p>
++    {{#headingLines}}
++            <text:p>{{.}}</text:p>
++    {{/headingLines}}
            </table:table-cell>
 -          <table:table-cell table:style-name="ce7" office:value-type="float" office:value="4" calcext:value-type="float">
 -            <text:p>4.0</text:p>
 +  {{/isNumeric}}
 +  {{^isNumeric}}
 +          <table:table-cell table:style-name="ce6" office:value-type="string" calcext:value-type="string">
-+            <text:p>{{heading}}</text:p>
++    {{#headingLines}}
++            <text:p>{{.}}</text:p>
++    {{/headingLines}}
            </table:table-cell>
 +  {{/isNumeric}}
 +{{/columns}}
