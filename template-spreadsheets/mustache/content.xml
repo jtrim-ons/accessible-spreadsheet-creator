@@ -30,6 +30,12 @@
     <style:style style:name="ro2" style:family="table-row">
       <style:table-row-properties style:row-height="0.529cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
+    <style:style style:name="intro_text_row" style:family="table-row">
+      <style:table-row-properties style:row-height="0.55cm" fo:break-before="auto" style:use-optimal-row-height="false"/>
+    </style:style>
+    <style:style style:name="intro_text_last_row" style:family="table-row">
+      <style:table-row-properties style:row-height="1cm" fo:break-before="auto" style:use-optimal-row-height="false"/>
+    </style:style>
     <style:style style:name="ro3" style:family="table-row">
       <style:table-row-properties style:row-height="1.25cm" fo:break-before="auto"/>
     </style:style>
@@ -53,8 +59,8 @@
       <style:paragraph-properties fo:text-align="end" fo:margin-left="0cm"/>
       <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
     </style:style>
-    <style:style style:name="cell_extra_padding_bottom" style:family="table-cell" style:parent-style-name="Default">
-      <style:table-cell-properties fo:padding-bottom="0.7cm"/>
+    <style:style style:name="cell_intro_text" style:family="table-cell" style:parent-style-name="Default">
+      <style:table-cell-properties style:vertical-align="top"/>
     </style:style>
     <style:style style:name="cell_hyperlink" style:family="table-cell" style:parent-style-name="Hyperlink"/>
     <style:style style:name="cell_number_1dp" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
@@ -103,8 +109,8 @@
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
-          <table:table-cell table:style-name="cell_extra_padding_bottom" office:value-type="string" calcext:value-type="string">
+        <table:table-row table:style-name="intro_text_last_row">
+          <table:table-cell table:style-name="cell_intro_text" office:value-type="string" calcext:value-type="string">
             <text:p>This worksheet contains one table.</text:p>
           </table:table-cell>
           <table:table-cell/>
@@ -138,8 +144,8 @@
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
-        <table:table-row table:style-name="ro2">
-          <table:table-cell table:style-name="cell_extra_padding_bottom" office:value-type="string" calcext:value-type="string">
+        <table:table-row table:style-name="intro_text_last_row">
+          <table:table-cell table:style-name="cell_intro_text" office:value-type="string" calcext:value-type="string">
             <text:p>This worksheet contains one table.</text:p>
           </table:table-cell>
           <table:table-cell/>
@@ -176,19 +182,20 @@
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
 {{#introText}}
-        <table:table-row table:style-name="ro2">
   {{#isLastIntroRow}}
-          <table:table-cell table:style-name="cell_extra_padding_bottom" office:value-type="string" calcext:value-type="string">
+        <table:table-row table:style-name="intro_text_last_row">
+          <table:table-cell table:style-name="cell_intro_text" office:value-type="string" calcext:value-type="string">
             <text:p>{{text}}</text:p>
           </table:table-cell>
+        </table:table-row>
   {{/isLastIntroRow}}
   {{^isLastIntroRow}}
-          <table:table-cell office:value-type="string" calcext:value-type="string">
+        <table:table-row table:style-name="intro_text_row">
+          <table:table-cell table:style-name="cell_intro_text" office:value-type="string" calcext:value-type="string">
             <text:p>{{text}}</text:p>
           </table:table-cell>
+        </table:table-row>
   {{/isLastIntroRow}}
-          <table:table-cell table:number-columns-repeated="2"/>
-      </table:table-row>
 {{/introText}}
         <table:table-row table:style-name="ro2">
 {{#columns}}
