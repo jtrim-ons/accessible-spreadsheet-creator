@@ -95,19 +95,39 @@ function columnWidth(strings) {
 	return ((maxPixelWidth / 37.8) + 0.5).toFixed(2);
 }
 
+function calcRowCount(text) {
+	const tokens = text.split(' ');
+	const columnWidth = 15.45 * 37.8; // cm * pixels per cm
+	const spaceWidth = approxTextWidth(' ');
+	let rowCount = 1;
+	let rowWidth = approxTextWidth(tokens[0]);
+	for (const token of tokens.slice(1)) {
+		const tokenWidth = approxTextWidth(token);
+		rowWidth += spaceWidth + tokenWidth;
+		if (rowWidth > columnWidth) {
+			++rowCount;
+			rowWidth = tokenWidth;
+		}
+	}
+
+	return rowCount;
+}
+
 function makeCoverSheetContents(coverSheetMarkdown) {
-	return coverSheetMarkdown.map(item => {
-		if (item.startsWith('## ')) {
-			return {isSubtitle: true, text: item.slice(3)}
-		}
+	return coverSheetMarkdown
+		.flatMap(d => d.split('\n'))
+		.map((item, i) => {
+			if (item.startsWith('## ')) {
+				return {isSubtitle: true, text: item.slice(3)};
+			}
 
-		if (/^\[.*\]\(.*\)$/.test(item)) {
-			const tokens = item.slice(1, -1).split('](');
-			return {isHyperlink: true, text: tokens[0], href: tokens[1]};
-		}
+			if (/^\[.*\]\(.*\)$/.test(item)) {
+				const tokens = item.slice(1, -1).split('](');
+				return {isHyperlink: true, text: tokens[0], href: tokens[1], rowCount: calcRowCount('.')};
+			}
 
-		return {isText: true, text: item};
-	});
+			return {isText: true, text: item, rowCount: calcRowCount(item)};
+		});
 }
 
 function oneTableMessage(hasNotes) {
@@ -135,6 +155,13 @@ export default function createZip(odsData) {
 		coverSheetContents: makeCoverSheetContents(odsData.coverSheetContents),
 		sheets: JSON.parse(JSON.stringify(odsData.sheets)),
 	};
+
+	mustacheData.coverSheetRowStyles = [
+		...new Set(mustacheData.coverSheetContents.map(d => d.rowCount).filter(Boolean)),
+	].map(d => ({
+		styleName: 'coverSheetRowStyle_' + d,
+		rowHeightCm: d * 0.53 + 0.4 // Found by trial and error
+	}));
 
 	mustacheData.notes = processNotes(odsData.notes, mustacheData.sheets);
 	mustacheData.hasNotes = mustacheData.notes.length > 0;

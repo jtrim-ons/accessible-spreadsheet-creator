@@ -30,6 +30,11 @@
     <style:style style:name="ro2" style:family="table-row">
       <style:table-row-properties style:row-height="0.529cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
     </style:style>
+{{#coverSheetRowStyles}}
+    <style:style style:name="{{styleName}}" style:family="table-row">
+      <style:table-row-properties style:row-height="{{rowHeightCm}}cm" fo:break-before="auto" style:use-optimal-row-height="false"/>
+    </style:style>
+{{/coverSheetRowStyles}}
     <style:style style:name="intro_text_row" style:family="table-row">
       <style:table-row-properties style:row-height="0.55cm" fo:break-before="auto" style:use-optimal-row-height="false"/>
     </style:style>
@@ -84,20 +89,20 @@
           </table:table-cell>
         </table:table-row>
 {{/isSubtitle}}
-{{#isText}}
-        <table:table-row table:style-name="ro2">
+{{^isSubtitle}}
+        <table:table-row table:style-name="coverSheetRowStyle_{{rowCount}}">
+  {{#isText}}
           <table:table-cell table:style-name="ce5" office:value-type="string" calcext:value-type="string">
             <text:p>{{text}}</text:p>
           </table:table-cell>
-        </table:table-row>
-{{/isText}}
-{{#isHyperlink}}
-        <table:table-row table:style-name="ro2">
+  {{/isText}}
+  {{#isHyperlink}}
           <table:table-cell table:style-name="cell_hyperlink" office:value-type="string" calcext:value-type="string">
             <text:p><text:a xlink:href="{{href}}" xlink:type="simple">{{text}}</text:a></text:p>
           </table:table-cell>
+  {{/isHyperlink}}
         </table:table-row>
-{{/isHyperlink}}
+{{/isSubtitle}}
 {{/coverSheetContents}}
       </table:table>
       <table:table table:name="Contents" table:style-name="ta1">

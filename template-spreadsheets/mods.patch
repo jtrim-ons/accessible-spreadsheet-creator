@@ -1,6 +1,6 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-13 18:24:13
-+++ template-spreadsheets/mustache/content.xml	2023-10-14 17:14:35
-@@ -11,25 +11,39 @@
++++ template-spreadsheets/mustache/content.xml	2023-10-16 15:17:56
+@@ -11,25 +11,44 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
      </style:style>
@@ -25,6 +25,11 @@
      <style:style style:name="ro2" style:family="table-row">
        <style:table-row-properties style:row-height="0.529cm" fo:break-before="auto" style:use-optimal-row-height="true"/>
      </style:style>
++{{#coverSheetRowStyles}}
++    <style:style style:name="{{styleName}}" style:family="table-row">
++      <style:table-row-properties style:row-height="{{rowHeightCm}}cm" fo:break-before="auto" style:use-optimal-row-height="false"/>
++    </style:style>
++{{/coverSheetRowStyles}}
 +    <style:style style:name="intro_text_row" style:family="table-row">
 +      <style:table-row-properties style:row-height="0.55cm" fo:break-before="auto" style:use-optimal-row-height="false"/>
 +    </style:style>
@@ -43,7 +48,7 @@
        <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
      </style:style>
      <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
-@@ -37,9 +51,20 @@
+@@ -37,9 +56,20 @@
        <style:table-cell-properties fo:wrap-option="wrap"/>
      </style:style>
      <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default">
@@ -65,7 +70,7 @@
    </office:automatic-styles>
    <office:body>
      <office:spreadsheet>
-@@ -48,142 +73,172 @@
+@@ -48,142 +78,172 @@
          <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
@@ -81,26 +86,29 @@
 +            <text:p>{{text}}</text:p>
            </table:table-cell>
          </table:table-row>
+-        <table:table-row table:style-name="ro2">
 +{{/isSubtitle}}
-+{{#isText}}
-         <table:table-row table:style-name="ro2">
++{{^isSubtitle}}
++        <table:table-row table:style-name="coverSheetRowStyle_{{rowCount}}">
++  {{#isText}}
            <table:table-cell table:style-name="ce5" office:value-type="string" calcext:value-type="string">
 -            <text:p>Section text</text:p>
 +            <text:p>{{text}}</text:p>
            </table:table-cell>
++  {{/isText}}
++  {{#isHyperlink}}
++          <table:table-cell table:style-name="cell_hyperlink" office:value-type="string" calcext:value-type="string">
++            <text:p><text:a xlink:href="{{href}}" xlink:type="simple">{{text}}</text:a></text:p>
++          </table:table-cell>
++  {{/isHyperlink}}
          </table:table-row>
 -        <table:table-row table:style-name="ro2" table:number-rows-repeated="1048572">
 -          <table:table-cell/>
 -        </table:table-row>
-+{{/isText}}
-+{{#isHyperlink}}
-         <table:table-row table:style-name="ro2">
+-        <table:table-row table:style-name="ro2">
 -          <table:table-cell/>
-+          <table:table-cell table:style-name="cell_hyperlink" office:value-type="string" calcext:value-type="string">
-+            <text:p><text:a xlink:href="{{href}}" xlink:type="simple">{{text}}</text:a></text:p>
-+          </table:table-cell>
-         </table:table-row>
-+{{/isHyperlink}}
+-        </table:table-row>
++{{/isSubtitle}}
 +{{/coverSheetContents}}
        </table:table>
        <table:table table:name="Contents" table:style-name="ta1">

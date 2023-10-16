@@ -92,6 +92,10 @@ const odsData = {
 	],
 };
 
+for (let i=3; i<6; i++) {
+	odsData.coverSheetContents.push('Here is a cell with lots and lots and lots of words. '.repeat(i * 3));
+}
+
 const zipFiles = accessibleSpreadsheetCreator(odsData);
 
 const zip = new JSZip();
