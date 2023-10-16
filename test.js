@@ -96,7 +96,7 @@ const zipFiles = accessibleSpreadsheetCreator(odsData);
 
 const zip = new JSZip();
 for (const {filename, contents} of zipFiles) {
-	zip.file(filename, contents);
+	zip.file(filename, contents, {compression: filename === 'mimetype' ? 'STORE' : 'DEFLATE'});
 }
 
 zip.generateNodeStream({type: 'nodebuffer', streamFiles: true})
