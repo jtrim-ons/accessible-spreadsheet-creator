@@ -74,7 +74,7 @@
   <office:body>
     <office:spreadsheet>
       <table:calculation-settings table:automatic-find-labels="false" table:use-regular-expressions="false" table:use-wildcards="true"/>
-      <table:table table:name="Cover sheet" table:style-name="ta1">
+      <table:table table:name="Cover_sheet" table:style-name="ta1">
         <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">

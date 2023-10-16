@@ -1,5 +1,5 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-13 18:24:13
-+++ template-spreadsheets/mustache/content.xml	2023-10-16 15:35:32
++++ template-spreadsheets/mustache/content.xml	2023-10-16 15:50:33
 @@ -11,25 +11,44 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -48,7 +48,7 @@
        <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
      </style:style>
      <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
-@@ -37,9 +56,20 @@
+@@ -37,153 +56,197 @@
        <style:table-cell-properties fo:wrap-option="wrap"/>
      </style:style>
      <style:style style:name="ce6" style:family="table-cell" style:parent-style-name="Default">
@@ -70,7 +70,9 @@
    </office:automatic-styles>
    <office:body>
      <office:spreadsheet>
-@@ -48,142 +78,175 @@
+       <table:calculation-settings table:automatic-find-labels="false" table:use-regular-expressions="false" table:use-wildcards="true"/>
+-      <table:table table:name="Cover sheet" table:style-name="ta1">
++      <table:table table:name="Cover_sheet" table:style-name="ta1">
          <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
