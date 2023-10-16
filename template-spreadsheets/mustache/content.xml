@@ -105,12 +105,12 @@
 {{/isSubtitle}}
 {{/coverSheetContents}}
       </table:table>
-      <table:table table:name="Contents" table:style-name="ta1">
+      <table:table table:name="Table_of_contents" table:style-name="ta1">
         <table:table-column table:style-name="co1" table:default-cell-style-name="Default"/>
         <table:table-column table:style-name="contents_and_notes_column_2" table:default-cell-style-name="Default"/>
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
-            <text:p>Contents</text:p>
+            <text:p>Table of contents</text:p>
           </table:table-cell>
           <table:table-cell/>
         </table:table-row>
@@ -240,7 +240,7 @@
 {{/sheets}}
       <table:named-expressions/>
       <table:database-ranges>
-        <table:database-range table:name="table_of_contents" table:target-range-address="'Contents'.{{firstTocCell}}:'Contents'.{{lastTocCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
+        <table:database-range table:name="table_of_contents" table:target-range-address="'Table_of_contents'.{{firstTocCell}}:'Table_of_contents'.{{lastTocCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
 {{#hasNotes}}
         <table:database-range table:name="notes_table" table:target-range-address="'Notes'.{{firstNotesTableCell}}:'Notes'.{{lastNotesTableCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
 {{/hasNotes}}
