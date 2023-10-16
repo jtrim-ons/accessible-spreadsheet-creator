@@ -164,7 +164,11 @@ export default function createZip(odsData) {
 	}));
 
 	mustacheData.notes = processNotes(odsData.notes, mustacheData.sheets);
-	mustacheData.hasNotes = mustacheData.notes.length > 0;
+	if (mustacheData.notes.length > 0) {
+		mustacheData.hasNotes = true;
+		mustacheData.firstNotesTableCell = cellRef(1, 3);
+		mustacheData.lastNotesTableCell = cellRef(2, 3 + mustacheData.notes.length);
+	}
 
 	mustacheData.tableCount = mustacheData.sheets.length + 2 + mustacheData.hasNotes;
 

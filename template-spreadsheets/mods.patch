@@ -1,5 +1,5 @@
 --- template-spreadsheets/mustache/content.xml	2023-10-13 18:24:13
-+++ template-spreadsheets/mustache/content.xml	2023-10-16 15:17:56
++++ template-spreadsheets/mustache/content.xml	2023-10-16 15:35:32
 @@ -11,25 +11,44 @@
      <style:style style:name="co1" style:family="table-column">
        <style:table-column-properties fo:break-before="auto" style:column-width="2.258cm"/>
@@ -70,7 +70,7 @@
    </office:automatic-styles>
    <office:body>
      <office:spreadsheet>
-@@ -48,142 +78,172 @@
+@@ -48,142 +78,175 @@
          <table:table-column table:style-name="co3" table:default-cell-style-name="Default"/>
          <table:table-row table:style-name="ro1">
            <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
@@ -309,6 +309,9 @@
        <table:database-ranges>
 -        <table:database-range table:name="here_is_a_table" table:target-range-address="Contents.A3:Contents.B5" table:on-update-keep-styles="true" table:on-update-keep-size="false" table:orientation="column"/>
 +        <table:database-range table:name="table_of_contents" table:target-range-address="'Contents'.{{firstTocCell}}:'Contents'.{{lastTocCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
++{{#hasNotes}}
++        <table:database-range table:name="notes_table" table:target-range-address="'Notes'.{{firstNotesTableCell}}:'Notes'.{{lastNotesTableCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
++{{/hasNotes}}
 +{{#sheets}}
 +        <table:database-range table:name="{{tableName}}" table:target-range-address="'{{sheetNumber}}'.{{firstTableCell}}:'{{sheetNumber}}'.{{lastTableCell}}" table:on-update-keep-styles="true" table:on-update-keep-size="false"/>
 +{{/sheets}}
