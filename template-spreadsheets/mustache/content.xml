@@ -182,7 +182,7 @@
   {{/columnStyles}}
         <table:table-row table:style-name="ro1">
           <table:table-cell table:style-name="Heading_20_1" office:value-type="string" calcext:value-type="string">
-            <text:p>{{sheetName}}</text:p>
+            <text:p>Table {{sheetNumber}}: {{sheetName}}</text:p>
           </table:table-cell>
           <table:table-cell table:number-columns-repeated="2"/>
         </table:table-row>
