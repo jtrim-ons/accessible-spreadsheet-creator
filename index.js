@@ -6,8 +6,17 @@ import Mustache from 'mustache';
 
 let schemaValidator = null;
 
+function intToLetter(i) {
+	return String.fromCodePoint('A'.codePointAt(0) + i);
+}
+
 function cellRef(col, row) {
-	return String.fromCodePoint('A'.codePointAt(0) - 1 + col) + row;
+	const zeroBasedCol = col - 1;
+	if (zeroBasedCol < 26) {
+		return intToLetter(zeroBasedCol) + row;
+	}
+
+	return intToLetter(Math.floor(zeroBasedCol / 26) - 1) + intToLetter(zeroBasedCol % 26) + row;
 }
 
 function formatValues(values, style) {
