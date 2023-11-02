@@ -47,11 +47,6 @@
     <style:style style:name="ta1" style:family="table" style:master-page-name="Default">
       <style:table-properties table:display="true" style:writing-mode="lr-tb"/>
     </style:style>
-    <style:style style:name="ce1" style:family="table-cell" style:parent-style-name="Default">
-      <style:table-cell-properties fo:wrap-option="wrap"/>
-      <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
-    </style:style>
-    <style:style style:name="ce2" style:family="table-cell" style:parent-style-name="Default" style:data-style-name="N111"/>
     <style:style style:name="ce5" style:family="table-cell" style:parent-style-name="Default">
       <style:table-cell-properties fo:wrap-option="wrap"/>
     </style:style>

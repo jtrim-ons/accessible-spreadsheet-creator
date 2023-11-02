@@ -11,9 +11,6 @@
       <style:paragraph-properties style:tab-stop-distance="1.25cm"/>
       <style:text-properties style:font-name="Liberation Sans" fo:language="en" fo:country="GB" style:font-name-asian="PingFang SC" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Arial Unicode MS" style:language-complex="hi" style:country-complex="IN"/>
     </style:default-style>
-    <number:number-style style:name="N0">
-      <number:number number:min-integer-digits="1"/>
-    </number:number-style>
     <number:number-style style:name="N111">
       <number:number number:decimal-places="1" number:min-decimal-places="1" number:min-integer-digits="1"/>
     </number:number-style>
