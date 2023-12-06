@@ -204,6 +204,12 @@ export default function createZip(odsData) {
 			const widthCm = Math.max(2.4, columnWidth(column.valuesFormatted.map(d => d.displayValue)));
 			return {name: 'colStyle' + i + '_' + j, widthCm};
 		});
+
+		for (const column of sheet.columns) {
+			// TODO: avoid the need for this by creating a new object for each sheet?
+			delete column.values;
+			delete column.valuesFormatted;
+		}
 	}
 
 	return odsTemplate.map(item => ({filename: item.filename, contents: Mustache.render(item.contents, mustacheData)}));
